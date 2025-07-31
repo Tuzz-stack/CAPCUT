@@ -1,0 +1,25 @@
+identity:
+  author: "Tuzz-stack"
+  name: "capcut"
+  label:
+    en_US: "capcut"
+    zh_Hans: "capcut"
+    pt_BR: "capcut"
+  description:
+    en_US: "capcut"
+    zh_Hans: "capcut"
+    pt_BR: "capcut"
+  icon: "icon.svg"
+tools:
+  - tools/capcut_add_text.yaml
+  - tools/capcut_create_draft.yaml
+  - tools/capcut_add_video.yaml
+  - tools/capcut_add_audio.yaml
+  - tools/capcut_add_image.yaml
+  - tools/capcut_add_subtitle.yaml
+  - tools/capcut_add_effect.yaml
+  - tools/capcut_add_sticker.yaml
+  - tools/capcut_save_draft.yaml
+extra:
+  python:
+    source: provider/capcut.py

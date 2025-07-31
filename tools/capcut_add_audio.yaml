@@ -1,0 +1,140 @@
+identity:
+  name: "capcut_add_audio"
+  author: "zxf"
+  label:
+    en_US: "capcut_add_audio"
+    zh_Hans: "capcut_add_audio"
+    pt_BR: "capcut_add_audio"
+description:
+  human:
+    en_US: "capcut_add_audio"
+    zh_Hans: "capcut_add_audio"
+    pt_BR: "capcut_add_audio"
+  llm: "capcut_add_audio"
+parameters:
+  - name: audio_url
+    type: string
+    required: true
+    label:
+      en_US: audio_url
+      zh_Hans: 音频的url地址
+      pt_BR: audio_url
+    human_description:
+      en_US: "audio_url"
+      zh_Hans: "audio_url"
+      pt_BR: "audio_url"
+    llm_description: "audio_url"
+    form: llm
+  - name: start
+    type: string
+    required: true
+    label:
+      en_US: start
+      zh_Hans: 截取的起始秒数
+      pt_BR: start
+    human_description:
+      en_US: "start"
+      zh_Hans: "start"
+      pt_BR: "start"
+    llm_description: "start"
+    form: llm
+  - name: end
+    type: string
+    required: true
+    label:
+      en_US: end
+      zh_Hans: 截取的结束时间
+      pt_BR: end
+    human_description:
+      en_US: "end"
+      zh_Hans: "end"
+      pt_BR: "end"
+    llm_description: "end"
+    form: llm
+  - name: target_start
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: target_start
+      zh_Hans: 插入起点
+      pt_BR: target_start
+    human_description:
+      en_US: "target_start"
+      zh_Hans: "target_start"
+      pt_BR: "target_start"
+    llm_description: "target_start"
+    form: llm
+  - name: draft_id
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: draft_id
+      zh_Hans: 草稿id，若不提供则新建草稿
+      pt_BR: draft_id
+    human_description:
+      en_US: "draft_id"
+      zh_Hans: "draft_id"
+      pt_BR: "draft_id"
+    llm_description: "draft_id"
+    form: llm
+  - name: volume
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: volume
+      zh_Hans: 设置音频的音量
+      pt_BR: volume
+    human_description:
+      en_US: "volume"
+      zh_Hans: "volume"
+      pt_BR: "volume"
+    llm_description: "volume"
+    form: llm
+  - name: track_name
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: track_name
+      zh_Hans: 为音频轨道命名，默认audio_main
+      pt_BR: track_name
+    human_description:
+      en_US: "track_name"
+      zh_Hans: "track_name"
+      pt_BR: "track_name"
+    llm_description: "track_name"
+    form: llm
+  - name: speed
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: speed
+      zh_Hans: 调整音频的播放速度
+      pt_BR: speed
+    human_description:
+      en_US: "speed"
+      zh_Hans: "speed"
+      pt_BR: "speed"
+    llm_description: "speed"
+    form: llm
+  - name: sound_effects
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: sound_effects
+      zh_Hans: 场景音效列表，输入格式为：[a,b] 其中ab类型均为整数或小数
+      pt_BR: efeitos_sonoros
+    human_description:
+      en_US: "List of scene sound effects, each as (effect_type, [parameters]) (default None)"
+      zh_Hans: "场景音效列表，每个元素为(效果类型, [参数列表])（默认None）"
+      pt_BR: "Lista de efeitos sonoros de cena, cada um como (tipo_efeito, [parâmetros]) (padrão None)"
+    llm_description: "Optional list of sound effects with their parameters"
+    form: llm
+extra:
+  python:
+    source: tools/capcut_add_audio.py

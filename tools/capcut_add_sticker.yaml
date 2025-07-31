@@ -1,0 +1,254 @@
+identity:
+  name: "capcut_add_sticker"
+  author: "zxf"
+  label:
+    en_US: "capcut_add_sticker"
+    zh_Hans: "capcut_add_sticker"
+    pt_BR: "capcut_add_sticker"
+description:
+  human:
+    en_US: "capcut_add_sticker"
+    zh_Hans: "capcut_add_sticker"
+    pt_BR: "capcut_add_sticker"
+  llm: "capcut_add_sticker"
+parameters:
+  - name: resource_id
+    type: string
+    required: true
+    label:
+      en_US: Sticker Resource ID
+      zh_Hans: 贴纸资源ID
+      pt_BR: ID do Recurso do Stickers
+    human_description:
+      en_US: "Unique identifier for the sticker resource"
+      zh_Hans: "贴纸素材的唯一标识符"
+      pt_BR: "Identificador único do recurso do sticker"
+    llm_description: "Sticker resource identifier"
+    form: llm
+  - name: draft_id
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Draft ID
+      zh_Hans: 草稿ID（不填则创建新草稿）
+      pt_BR: ID do Rascunho
+    human_description:
+      en_US: "Draft ID (creates new draft if not specified)"
+      zh_Hans: "草稿ID（不填写时系统自动创建新草稿）"
+      pt_BR: "ID do rascunho (cria novo rascunho se não especificado)"
+    llm_description: "Draft identifier (optional, creates new draft if None)"
+    form: llm
+  - name: start
+    type: string
+    required: true
+    default: "None"
+    label:
+      en_US: Start Time (s)
+      zh_Hans: 开始时间（秒）
+      pt_BR: Tempo de Início (s)
+    human_description:
+      en_US: "Start time of sticker appearance in seconds"
+      zh_Hans: "贴纸显示的开始时间（秒）"
+      pt_BR: "Tempo de início da exibição do sticker em segundos"
+    llm_description: "Start time (seconds) for sticker display"
+    form: llm
+  - name: end
+    type: string
+    required: true
+    default: "None"
+    label:
+      en_US: End Time (s)
+      zh_Hans: 结束时间（秒）
+      pt_BR: Tempo de Fim (s)
+    human_description:
+      en_US: "End time of sticker appearance in seconds"
+      zh_Hans: "贴纸显示的结束时间（秒）"
+      pt_BR: "Tempo de término da exibição do sticker em segundos"
+    llm_description: "End time (seconds) for sticker display"
+    form: llm
+  - name: transform_x
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: X Position
+      zh_Hans: X轴位置（屏幕中心为0）
+      pt_BR: Posição X
+    human_description:
+      en_US: "Horizontal position (0 is screen center)"
+      zh_Hans: "水平位置（0表示屏幕中心）"
+      pt_BR: "Posição horizontal (0 é o centro da tela)"
+    llm_description: "X-axis position (0 = screen center)"
+    form: llm
+  - name: transform_y
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Y Position
+      zh_Hans: Y轴位置（屏幕中心为0）
+      pt_BR: Posição Y
+    human_description:
+      en_US: "Vertical position (0 is screen center)"
+      zh_Hans: "垂直位置（0表示屏幕中心）"
+      pt_BR: "Posição vertical (0 é o centro da tela)"
+    llm_description: "Y-axis position (0 = screen center)"
+    form: llm
+  - name: alpha
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Opacity
+      zh_Hans: 透明度（0-1）
+      pt_BR: Opacidade
+    human_description:
+      en_US: "Opacity level (0 = transparent, 1 = opaque)"
+      zh_Hans: "不透明度（0=完全透明，1=完全不透明）"
+      pt_BR: "Nível de opacidade (0 = transparente, 1 = opaco)"
+    llm_description: "Opacity (0-1 range)"
+    form: llm
+  - name: flip_horizontal
+    type: boolean
+    required: false
+    default: "None"
+    label:
+      en_US: Flip Horizontally
+      zh_Hans: 水平翻转
+      pt_BR: Inverter Horizontalmente
+    human_description:
+      en_US: "Flip sticker horizontally"
+      zh_Hans: "沿垂直中轴线左右翻转贴纸"
+      pt_BR: "Inverter o sticker horizontalmente"
+    llm_description: "Horizontal flip effect"
+    form: llm
+  - name: flip_vertical
+    type: select
+    required: false
+    default: false
+    label:
+      en_US: Flip Vertically
+      zh_Hans: 垂直翻转
+      pt_BR: Inverter Verticalmente
+    human_description:
+      en_US: "Flip sticker vertically"
+      zh_Hans: "沿水平中轴线上下翻转贴纸"
+      pt_BR: "Inverter o sticker verticalmente"
+    llm_description: "Vertical flip effect"
+    form: form
+    options:
+      - name: Flip Vertically true
+        label:
+          zh_Hans: 开启垂直翻转
+          en_US: Flip Vertically true
+        description: 开启垂直翻转
+        value: 'true'
+      - name: Flip Vertically false
+        label:
+          zh_Hans: 关闭垂直翻转
+          en_US: Flip Vertically false
+        description: 关闭垂直翻转
+        value: 'false'
+  - name: rotation
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Rotation (degrees)
+      zh_Hans: 旋转角度（度，顺时针）
+      pt_BR: Rotação (graus)
+    human_description:
+      en_US: "Clockwise rotation angle in degrees"
+      zh_Hans: "顺时针旋转角度（度）"
+      pt_BR: "Ângulo de rotação no sentido horário em graus"
+    llm_description: "Clockwise rotation angle (degrees)"
+    form: llm
+  - name: scale_x
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Horizontal Scale
+      zh_Hans: 水平缩放比例
+      pt_BR: Escala Horizontal
+    human_description:
+      en_US: "Horizontal scaling factor (1.0 = original size)"
+      zh_Hans: "水平缩放因子（1.0=原始大小）"
+      pt_BR: "Fator de escala horizontal (1,0 = tamanho original)"
+    llm_description: "Horizontal scaling ratio"
+    form: llm
+  - name: scale_y
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Vertical Scale
+      zh_Hans: 垂直缩放比例
+      pt_BR: Escala Vertical
+    human_description:
+      en_US: "Vertical scaling factor (1.0 = original size)"
+      zh_Hans: "垂直缩放因子（1.0=原始大小）"
+      pt_BR: "Fator de escala vertical (1,0 = tamanho original)"
+    llm_description: "Vertical scaling ratio"
+    form: llm
+  - name: track_name
+    type: string
+    required: true
+    default: ""
+    label:
+      en_US: Track Name
+      zh_Hans: 轨道名称
+      pt_BR: Nome da Trilha
+    human_description:
+      en_US: "Name of the track to place the sticker"
+      zh_Hans: "贴纸所在的轨道名称"
+      pt_BR: "Nome da trilha para colocar o sticker"
+    llm_description: "Track name for organizational purposes"
+    form: llm
+  - name: relative_index
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Layer Index
+      zh_Hans: 图层索引（值越高越靠前）
+      pt_BR: Índice da Camada
+    human_description:
+      en_US: "Layer position (higher values appear in front)"
+      zh_Hans: "图层层级（值越高越靠近前景）"
+      pt_BR: "Posição da camada (valores mais altos aparecem na frente)"
+    llm_description: "Relative layer position (higher = foreground)"
+    form: llm
+  - name: width
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Video Width
+      zh_Hans: 视频宽度（默认1080）
+      pt_BR: Largura do Vídeo
+    human_description:
+      en_US: "Video width in pixels (default 1080)"
+      zh_Hans: "视频宽度（像素，默认1080）"
+      pt_BR: "Largura do vídeo em pixels (padrão 1080)"
+    llm_description: "Video width (default 1080px)"
+    form: llm
+  - name: height
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Video Height
+      zh_Hans: 视频高度（默认1920）
+      pt_BR: Altura do Vídeo
+    human_description:
+      en_US: "Video height in pixels (default 1920)"
+      zh_Hans: "视频高度（像素，默认1920）"
+      pt_BR: "Altura do vídeo em pixels (padrão 1920)"
+    llm_description: "Video height (default 1920px)"
+    form: llm
+
+extra:
+  python:
+    source: tools/capcut_add_sticker.py

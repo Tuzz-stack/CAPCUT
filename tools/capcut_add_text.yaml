@@ -1,0 +1,1370 @@
+identity:
+  name: "capcut_add_text"
+  author: "zxf"
+  label:
+    en_US: "capcut_add_text"
+    zh_Hans: "capcut_add_text"
+    pt_BR: "capcut_add_text"
+description:
+  human:
+    en_US: "capcut_add_text"
+    zh_Hans: "capcut_add_text"
+    pt_BR: "capcut_add_text"
+  llm: "capcut_add_text"
+parameters:
+  - name: input_text
+    type: string
+    required: true
+    label:
+      en_US: input text
+      zh_Hans: 想要在草稿上添加的文本
+      pt_BR: texto de entrada
+    human_description:
+      en_US: "Specify the text content to be added to the subtitle"
+      zh_Hans: "指定要添加到字幕中的文本内容"
+      pt_BR: "Especifique o conteúdo do texto a ser adicionado à legenda"
+    llm_description: "The core text content displayed in the subtitle"
+    form: llm
+  - name: start
+    type: string
+    required: true
+    label:
+      en_US: start time (seconds)
+      zh_Hans: 开始时间（秒）
+      pt_BR: hora de início (segundos)
+    human_description:
+      en_US: "Set the time when the subtitle starts to display (in seconds)"
+      zh_Hans: "设置字幕开始显示的时间（以秒为单位）"
+      pt_BR: "Defina o momento em que a legenda começa a ser exibida (em segundos)"
+    llm_description: "The start time point of the subtitle display in the video"
+    form: llm
+  - name: end
+    type: string
+    required: true
+    label:
+      en_US: end time (seconds)
+      zh_Hans: 结束时间（秒）
+      pt_BR: hora de término (segundos)
+    human_description:
+      en_US: "Set the time when the subtitle stops displaying (in seconds)"
+      zh_Hans: "设置字幕停止显示的时间（以秒为单位）"
+      pt_BR: "Defina o momento em que a legenda deixa de ser exibida (em segundos)"
+    llm_description: "The end time point of the subtitle display in the video"
+    form: llm
+  - name: draft_id
+    type: string
+    required: false
+    label:
+      en_US: draft ID
+      zh_Hans: 草稿ID
+      pt_BR: ID do rascunho
+    human_description:
+      en_US: "Specify the draft ID to add subtitles to (create a new draft if not filled in)"
+      zh_Hans: "指定要添加字幕的草稿ID（不填写则创建新草稿）"
+      pt_BR: "Especifique o ID do rascunho para adicionar legendas (cria um novo rascunho se não preenchido)"
+    llm_description: "Identifier of the video draft to which the subtitle is added"
+    form: llm
+  - name: transform_y
+    type: string
+    required: false
+    label:
+      en_US: Y-axis position
+      zh_Hans: Y轴位置
+      pt_BR: posição do eixo Y
+    human_description:
+      en_US: "Control the vertical position of the subtitle (default -0.8, bottom of the screen)"
+      zh_Hans: "控制字幕在垂直方向的位置（默认-0.8，屏幕底部）"
+      pt_BR: "Controla a posição vertical da legenda (padrão -0.8, parte inferior da tela)"
+    llm_description: "Vertical position coordinate of the subtitle (range related to screen height)"
+    form: llm
+  - name: transform_x
+    type: string
+    required: false
+    label:
+      en_US: X-axis position
+      zh_Hans: X轴位置
+      pt_BR: posição do eixo X
+    human_description:
+      en_US: "Control the horizontal position of the subtitle (default 0, center of the screen)"
+      zh_Hans: "控制字幕在水平方向的位置（默认0，屏幕中心）"
+      pt_BR: "Controla a posição horizontal da legenda (padrão 0, centro da tela)"
+    llm_description: "Horizontal position coordinate of the subtitle (range related to screen width)"
+    form: llm
+  - name: font
+    type: select
+    required: true
+    label:
+      en_US: font
+      zh_Hans: 字体
+      pt_BR: fonte
+    human_description:
+      en_US: "Select the font style of the subtitle text"
+      zh_Hans: "选择字幕文本的字体样式"
+      pt_BR: "Selecione o estilo de fonte do texto da legenda"
+    llm_description: "Font family used for the subtitle text"
+    form: form
+    options:
+      - name: font1
+        label:
+          zh_Hans: 思源中宋
+          en_US: Source Han Serif Medium
+        description: 思源宋体中等粗细样式
+        value: '思源中宋'
+      - name: font2
+        label:
+          zh_Hans: 思源粗宋
+          en_US: Source Han Serif Bold
+        description: 思源宋体加粗样式
+        value: '思源粗宋'
+      - name: font3
+        label:
+          zh_Hans: 微软雅黑
+          en_US: Microsoft YaHei
+        description: 微软雅黑常规样式
+        value: '微软雅黑'
+      - name: font4
+        label:
+          zh_Hans: Arial
+          en_US: Arial
+        description: 经典无衬线英文字体
+        value: 'Arial'
+  - name: font_color
+    type: select
+    required: true
+    label:
+      en_US: font color
+      zh_Hans: 字体颜色
+      pt_BR: cor da fonte
+    human_description:
+      en_US: "Select the color of the subtitle text"
+      zh_Hans: "选择字幕文本的颜色"
+      pt_BR: "Selecione a cor do texto da legenda"
+    llm_description: "Color value of the subtitle text in hexadecimal format"
+    form: form
+    options:
+      - name: font_color_1
+        label:
+          zh_Hans: 红色
+          en_US: red
+        description: 红色字体
+        value: '#FF0000'
+      - name: font_color_2
+        label:
+          zh_Hans: 绿色
+          en_US: green
+        description: 绿色字体
+        value: '#00FF00'
+      - name: font_color_3
+        label:
+          zh_Hans: 蓝色
+          en_US: blue
+        description: 蓝色字体
+        value: '#0000FF'
+      - name: font_color_4
+        label:
+          zh_Hans: 黄色
+          en_US: yellow
+        description: 黄色字体
+        value: '#FFFF00'
+      - name: font_color_5
+        label:
+          zh_Hans: 紫色
+          en_US: purple
+        description: 紫色字体
+        value: '#800080'
+      - name: font_color_6
+        label:
+          zh_Hans: 橙色
+          en_US: orange
+        description: 橙色字体
+        value: '#FFA500'
+      - name: font_color_7
+        label:
+          zh_Hans: 黑色
+          en_US: black
+        description: 黑色字体
+        value: '#000000'
+      - name: font_color_8
+        label:
+          zh_Hans: 白色
+          en_US: white
+        description: 白色字体
+        value: '#FFFFFF'
+      - name: font_color_9
+        label:
+          zh_Hans: 灰色
+          en_US: gray
+        description: 灰色字体
+        value: '#808080'
+      - name: font_color_10
+        label:
+          zh_Hans: 粉色
+          en_US: pink
+        description: 粉色字体
+        value: '#FFC0CB'
+  - name: font_size
+    type: string
+    required: true
+    label:
+      en_US: font size
+      zh_Hans: 字体大小
+      pt_BR: tamanho da fonte
+    human_description:
+      en_US: "Set the size of the subtitle text (default 8.0, float value)"
+      zh_Hans: "设置字幕文本的大小（默认8.0，浮点数值）"
+      pt_BR: "Defina o tamanho do texto da legenda (padrão 8.0, valor float)"
+    llm_description: "Numerical value representing the size of the subtitle text"
+    form: llm
+  - name: track_name
+    type: string
+    required: false
+    label:
+      en_US: track name
+      zh_Hans: 轨道名称
+      pt_BR: nome da faixa
+    human_description:
+      en_US: "Specify the track name where the subtitle is located in the video"
+      zh_Hans: "指定字幕在视频中所属的轨道名称"
+      pt_BR: "Especifique o nome da faixa onde a legenda está localizada no vídeo"
+    llm_description: "Name of the timeline track that contains the subtitle"
+    form: llm
+  - name: vertical
+    type: select
+    required: false
+    label:
+      en_US: vertical display
+      zh_Hans: 是否垂直显示
+      pt_BR: exibição vertical
+    human_description:
+      en_US: "Set whether the subtitle is displayed vertically (default False)"
+      zh_Hans: "设置字幕是否垂直显示（默认不垂直）"
+      pt_BR: "Defina se a legenda é exibida verticalmente (padrão False)"
+    llm_description: "Boolean indicator for vertical text arrangement (True/False)"
+    form: form
+    options:
+      - name: vertical_false
+        label:
+          zh_Hans: 否
+          en_US: vertical_false
+        description: 水平显示（从左到右）
+        value: 'False'
+      - name: vertical_true
+        label:
+          zh_Hans: 是
+          en_US: vertical_true
+        description: 垂直显示（从上到下）
+        value: 'True'
+  - name: font_alpha
+    type: string
+    required: false
+    label:
+      en_US: text transparency
+      zh_Hans: 文本透明度
+      pt_BR: transparência do texto
+    human_description:
+      en_US: "Set the transparency of the text (range 0.0-1.0, default 1.0)"
+      zh_Hans: "设置文本的透明程度（范围0.0-1.0，默认1.0完全不透明）"
+      pt_BR: "Defina a transparência do texto (intervalo 0.0-1.0, padrão 1.0)"
+    llm_description: "Transparency value of the subtitle text (0.0=fully transparent, 1.0=opaque)"
+    form: llm
+  - name: border_alpha
+    type: string
+    required: false
+    label:
+      en_US: border transparency
+      zh_Hans: 边框透明度
+      pt_BR: transparência da borda
+    human_description:
+      en_US: "Set the transparency of the text border (range 0.0-1.0, default 1.0)"
+      zh_Hans: "设置文本边框的透明程度（范围0.0-1.0，默认1.0完全不透明）"
+      pt_BR: "Defina a transparência da borda do texto (intervalo 0.0-1.0, padrão 1.0)"
+    llm_description: "Transparency value of the text border (0.0=fully transparent, 1.0=opaque)"
+    form: llm
+  - name: border_color
+    type: select
+    required: false
+    label:
+      en_US: border color
+      zh_Hans: 边框颜色
+      pt_BR: cor da borda
+    human_description:
+      en_US: "Select the color of the text border (default black)"
+      zh_Hans: "选择文本边框的颜色（默认黑色）"
+      pt_BR: "Selecione a cor da borda do texto (padrão preto)"
+    llm_description: "Color value of the text border in hexadecimal format"
+    form: form
+    options:
+      - name: border_color_1
+        label:
+          zh_Hans: 黑色
+          en_US: black
+        description: 黑色边框
+        value: '#000000'
+      - name: border_color_2
+        label:
+          zh_Hans: 白色
+          en_US: white
+        description: 白色边框
+        value: '#FFFFFF'
+      - name: border_color_3
+        label:
+          zh_Hans: 红色
+          en_US: red
+        description: 红色边框
+        value: '#FF0000'
+      - name: border_color_4
+        label:
+          zh_Hans: 蓝色
+          en_US: blue
+        description: 蓝色边框
+        value: '#0000FF'
+  - name: border_width
+    type: string
+    required: false
+    label:
+      en_US: border width
+      zh_Hans: 边框宽度
+      pt_BR: largura da borda
+    human_description:
+      en_US: "Set the width of the text border (default 0.0, no border)"
+      zh_Hans: "设置文本边框的宽度（默认0.0，不显示边框）"
+      pt_BR: "Defina a largura da borda do texto (padrão 0.0, sem borda)"
+    llm_description: "Numerical value representing the thickness of the text border"
+    form: llm
+  - name: background_color
+    type: select
+    required: false
+    label:
+      en_US: background color
+      zh_Hans: 背景颜色
+      pt_BR: cor de fundo
+    human_description:
+      en_US: "Select the background color of the subtitle (default black)"
+      zh_Hans: "选择字幕的背景颜色（默认黑色）"
+      pt_BR: "Selecione a cor de fundo da legenda (padrão preto)"
+    llm_description: "Color value of the subtitle background in hexadecimal format"
+    form: form
+    options:
+      - name: bg_color_1
+        label:
+          zh_Hans: 黑色
+          en_US: black
+        description: 黑色背景
+        value: '#000000'
+      - name: bg_color_2
+        label:
+          zh_Hans: 白色
+          en_US: white
+        description: 白色背景
+        value: '#FFFFFF'
+      - name: bg_color_3
+        label:
+          zh_Hans: 灰色
+          en_US: gray
+        description: 灰色背景
+        value: '#808080'
+      - name: bg_color_4
+        label:
+          zh_Hans: 透明
+          en_US: transparent
+        description: 透明背景（等同于无背景）
+        value: 'transparent'
+  - name: background_style
+    type: select
+    required: false
+    label:
+      en_US: background style
+      zh_Hans: 背景样式
+      pt_BR: estilo de fundo
+    human_description:
+      en_US: "Set the style of the subtitle background (default 1)"
+      zh_Hans: "设置字幕背景的样式（默认1）"
+      pt_BR: "Defina o estilo do fundo da legenda (padrão 1)"
+    llm_description: "Style identifier for the subtitle background (preset styles)"
+    form: form
+    options:
+      - name: bg_style_1
+        label:
+          zh_Hans: 矩形
+          en_US: Rectangle
+        description: 矩形背景样式
+        value: '1'
+      - name: bg_style_2
+        label:
+          zh_Hans: 圆角矩形
+          en_US: Rounded Rectangle
+        description: 圆角矩形背景样式
+        value: '2'
+      - name: bg_style_3
+        label:
+          zh_Hans: 无样式
+          en_US: No Style
+        description: 无特殊背景样式
+        value: '0'
+  - name: background_alpha
+    type: string
+    required: false
+    label:
+      en_US: background transparency
+      zh_Hans: 背景透明度
+      pt_BR: transparência do fundo
+    human_description:
+      en_US: "Set the transparency of the background (range 0.0-1.0, default 0.0)"
+      zh_Hans: "设置背景的透明程度（范围0.0-1.0，默认0.0不显示背景）"
+      pt_BR: "Defina a transparência do fundo (intervalo 0.0-1.0, padrão 0.0)"
+    llm_description: "Transparency value of the subtitle background (0.0=fully transparent, 1.0=opaque)"
+    form: llm
+  - name: bubble_effect_id
+    type: string
+    required: false
+    label:
+      en_US: bubble effect ID
+      zh_Hans: 气泡效果ID
+      pt_BR: ID do efeito de bolha
+    human_description:
+      en_US: "Specify the ID of the bubble effect applied to the subtitle"
+      zh_Hans: "指定应用于字幕的气泡效果ID"
+      pt_BR: "Especifique o ID do efeito de bolha aplicado à legenda"
+    llm_description: "Identifier for the bubble effect applied to the subtitle"
+    form: llm
+  - name: bubble_resource_id
+    type: string
+    required: false
+    label:
+      en_US: bubble resource ID
+      zh_Hans: 气泡资源ID
+      pt_BR: ID do recurso de bolha
+    human_description:
+      en_US: "Specify the resource ID for custom bubble effect"
+      zh_Hans: "指定自定义气泡效果的资源ID"
+      pt_BR: "Especifique o ID do recurso para efeito de bolha personalizado"
+    llm_description: "Resource identifier for custom bubble effect assets"
+    form: llm
+  - name: effect_effect_id
+    type: string
+    required: false
+    label:
+      en_US: text effect ID
+      zh_Hans: 文字效果ID
+      pt_BR: ID do efeito de texto
+    human_description:
+      en_US: "Specify the ID of the special effect applied to the text"
+      zh_Hans: "指定应用于文字的特殊效果ID"
+      pt_BR: "Especifique o ID do efeito especial aplicado ao texto"
+    llm_description: "Identifier for special effects applied to the subtitle text"
+    form: llm
+  - name: intro_animation
+    type: select
+    required: false
+    label:
+      en_US: intro animation type
+      zh_Hans: 入场动画类型
+      pt_BR: tipo de animação de entrada
+    human_description:
+      en_US: "Select the animation type when the subtitle appears"
+      zh_Hans: "选择字幕出现时的入场动画类型"
+      pt_BR: "Selecione o tipo de animação quando a legenda aparece"
+    llm_description: "Type of animation used when the subtitle starts to display"
+    form: form
+    options:
+      - name: intro_screen_rush
+        label:
+          zh_Hans: 冲屏位移
+          en_US: Screen Rush Displacement
+        description: 冲屏位移入场动画
+        value: '冲屏位移'
+      - name: intro_karaoke
+        label:
+          zh_Hans: 卡拉OK
+          en_US: Karaoke
+        description: 卡拉OK入场动画
+        value: '卡拉OK'
+      - name: intro_color_change_input
+        label:
+          zh_Hans: 变色输入
+          en_US: Color Change Input
+        description: 变色输入入场动画
+        value: '变色输入'
+      - name: intro_pop_in_top_right
+        label:
+          zh_Hans: 右上弹入
+          en_US: Pop In Top Right
+        description: 右上弹入入场动画
+        value: '右上弹入'
+      - name: intro_wipe_open_bottom_right
+        label:
+          zh_Hans: 右下擦开
+          en_US: Wipe Open Bottom Right
+        description: 右下擦开入场动画
+        value: '右下擦开'
+      - name: intro_wipe_up
+        label:
+          zh_Hans: 向上擦除
+          en_US: Wipe Up
+        description: 向上擦除入场动画
+        value: '向上擦除'
+      - name: intro_slide_up
+        label:
+          zh_Hans: 向上滑动
+          en_US: Slide Up
+        description: 向上滑动入场动画
+        value: '向上滑动'
+      - name: intro_flip_up
+        label:
+          zh_Hans: 向上翻转
+          en_US: Flip Up
+        description: 向上翻转入场动画
+        value: '向上翻转'
+      - name: intro_overlap_up
+        label:
+          zh_Hans: 向上重叠
+          en_US: Overlap Up
+        description: 向上重叠入场动画
+        value: '向上重叠'
+      - name: intro_reveal_up
+        label:
+          zh_Hans: 向上露出
+          en_US: Reveal Up
+        description: 向上露出入场动画
+        value: '向上露出'
+      - name: intro_wipe_down
+        label:
+          zh_Hans: 向下擦除
+          en_US: Wipe Down
+        description: 向下擦除入场动画
+        value: '向下擦除'
+      - name: intro_slide_down
+        label:
+          zh_Hans: 向下滑动
+          en_US: Slide Down
+        description: 向下滑动入场动画
+        value: '向下滑动'
+      - name: intro_reveal_down
+        label:
+          zh_Hans: 向下露出
+          en_US: Reveal Down
+        description: 向下露出入场动画
+        value: '向下露出'
+      - name: intro_fly_in_down
+        label:
+          zh_Hans: 向下飞入
+          en_US: Fly In Down
+        description: 向下飞入入场动画
+        value: '向下飞入'
+      - name: intro_wipe_right
+        label:
+          zh_Hans: 向右擦除
+          en_US: Wipe Right
+        description: 向右擦除入场动画
+        value: '向右擦除'
+      - name: intro_slide_right
+        label:
+          zh_Hans: 向右滑动
+          en_US: Slide Right
+        description: 向右滑动入场动画
+        value: '向右滑动'
+      - name: intro_ease_in_right
+        label:
+          zh_Hans: 向右缓入
+          en_US: Ease In Right
+        description: 向右缓入入场动画
+        value: '向右缓入'
+      - name: intro_gather_right
+        label:
+          zh_Hans: 向右集合
+          en_US: Gather Right
+        description: 向右集合入场动画
+        value: '向右集合'
+      - name: intro_reveal_right
+        label:
+          zh_Hans: 向右露出
+          en_US: Reveal Right
+        description: 向右露出入场动画
+        value: '向右露出'
+      - name: intro_wipe_left
+        label:
+          zh_Hans: 向左擦除
+          en_US: Wipe Left
+        description: 向左擦除入场动画
+        value: '向左擦除'
+      - name: intro_slide_left
+        label:
+          zh_Hans: 向左滑动
+          en_US: Slide Left
+        description: 向左滑动入场动画
+        value: '向左滑动'
+      - name: intro_reveal_left
+        label:
+          zh_Hans: 向左露出
+          en_US: Reveal Left
+        description: 向左露出入场动画
+        value: '向左露出'
+      - name: intro_circular_scan
+        label:
+          zh_Hans: 圆形扫描
+          en_US: Circular Scan
+        description: 圆形扫描入场动画
+        value: '圆形扫描'
+      - name: intro_vintage_typewriter
+        label:
+          zh_Hans: 复古打字机
+          en_US: Vintage Typewriter
+        description: 复古打字机入场动画
+        value: '复古打字机'
+      - name: intro_center_typing
+        label:
+          zh_Hans: 居中打字
+          en_US: Center Typing
+        description: 居中打字入场动画
+        value: '居中打字'
+      - name: intro_pop_in_top_left
+        label:
+          zh_Hans: 左上弹入
+          en_US: Pop In Top Left
+        description: 左上弹入入场动画
+        value: '左上弹入'
+      - name: intro_bounce_left
+        label:
+          zh_Hans: 左移弹动
+          en_US: Bounce Left
+        description: 左移弹动入场动画
+        value: '左移弹动'
+      - name: intro_curtain_open
+        label:
+          zh_Hans: 开幕
+          en_US: Curtain Open
+        description: 开幕入场动画
+        value: '开幕'
+      - name: intro_pop_in
+        label:
+          zh_Hans: 弹入
+          en_US: Pop In
+        description: 弹入入场动画
+        value: '弹入'
+      - name: intro_slingshot
+        label:
+          zh_Hans: 弹弓
+          en_US: Slingshot
+        description: 弹弓入场动画
+        value: '弹弓'
+      - name: intro_elastic_stretch
+        label:
+          zh_Hans: 弹性伸缩
+          en_US: Elastic Stretch
+        description: 弹性伸缩入场动画
+        value: '弹性伸缩'
+      - name: intro_spring
+        label:
+          zh_Hans: 弹簧
+          en_US: Spring
+        description: 弹簧入场动画
+        value: '弹簧'
+      - name: intro_color_mapping
+        label:
+          zh_Hans: 彩色映射
+          en_US: Color Mapping
+        description: 彩色映射入场动画
+        value: '彩色映射'
+      - name: intro_typewriter_i
+        label:
+          zh_Hans: 打字机_I
+          en_US: Typewriter I
+        description: 打字机_I入场动画
+        value: '打字机_I'
+      - name: intro_typewriter_ii
+        label:
+          zh_Hans: 打字机_II
+          en_US: Typewriter II
+        description: 打字机_II入场动画
+        value: '打字机_II'
+      - name: intro_typewriter_iii
+        label:
+          zh_Hans: 打字机_III
+          en_US: Typewriter III
+        description: 打字机_III入场动画
+        value: '打字机_III'
+      - name: intro_typewriter_iv
+        label:
+          zh_Hans: 打字机IV
+          en_US: Typewriter IV
+        description: 打字机IV入场动画
+        value: '打字机IV'
+      - name: intro_twist_blur
+        label:
+          zh_Hans: 扭曲模糊
+          en_US: Twist Blur
+        description: 扭曲模糊入场动画
+        value: '扭曲模糊'
+      - name: intro_trailing
+        label:
+          zh_Hans: 拖尾
+          en_US: Trailing
+        description: 拖尾入场动画
+        value: '拖尾'
+      - name: intro_gather
+        label:
+          zh_Hans: 收拢
+          en_US: Gather
+        description: 收拢入场动画
+        value: '收拢'
+      - name: intro_zoom_in
+        label:
+          zh_Hans: 放大
+          en_US: Zoom In
+        description: 放大入场动画
+        value: '放大'
+      - name: intro_glitch_typewriter
+        label:
+          zh_Hans: 故障打字机
+          en_US: Glitch Typewriter
+        description: 故障打字机入场动画
+        value: '故障打字机'
+      - name: intro_spin_in
+        label:
+          zh_Hans: 旋入
+          en_US: Spin In
+        description: 旋入入场动画
+        value: '旋入'
+      - name: intro_sunrise
+        label:
+          zh_Hans: 日出
+          en_US: Sunrise
+        description: 日出入场动画
+        value: '日出'
+      - name: intro_spread
+        label:
+          zh_Hans: 晕开
+          en_US: Spread
+        description: 晕开入场动画
+        value: '晕开'
+      - name: intro_blur
+        label:
+          zh_Hans: 模糊
+          en_US: Blur
+        description: 模糊入场动画
+        value: '模糊'
+      - name: intro_ink_spread
+        label:
+          zh_Hans: 水墨晕开
+          en_US: Ink Spread
+        description: 水墨晕开入场动画
+        value: '水墨晕开'
+      - name: intro_horizontal_flip
+        label:
+          zh_Hans: 水平翻转
+          en_US: Horizontal Flip
+        description: 水平翻转入场动画
+        value: '水平翻转'
+      - name: intro_wave_pop_in
+        label:
+          zh_Hans: 波浪弹入
+          en_US: Wave Pop In
+        description: 波浪弹入入场动画
+        value: '波浪弹入'
+      - name: intro_fade_in
+        label:
+          zh_Hans: 渐显
+          en_US: Fade In
+        description: 渐显入场动画
+        value: '渐显'
+      - name: intro_dissolve
+        label:
+          zh_Hans: 溶解
+          en_US: Dissolve
+        description: 溶解入场动画
+        value: '溶解'
+      - name: intro_slide_rise
+        label:
+          zh_Hans: 滑动上升
+          en_US: Slide Rise
+        description: 滑动上升入场动画
+        value: '滑动上升'
+      - name: intro_grow
+        label:
+          zh_Hans: 生长
+          en_US: Grow
+        description: 生长入场动画
+        value: '生长'
+      - name: intro_fling_out
+        label:
+          zh_Hans: 甩出
+          en_US: Fling Out
+        description: 甩出入场动画
+        value: '甩出'
+      - name: intro_stand_up
+        label:
+          zh_Hans: 站起
+          en_US: Stand Up
+        description: 站起入场动画
+        value: '站起'
+      - name: intro_zoom_out
+        label:
+          zh_Hans: 缩小
+          en_US: Zoom Out
+        description: 缩小入场动画
+        value: '缩小'
+      - name: intro_zoom_out_ii
+        label:
+          zh_Hans: 缩小_II
+          en_US: Zoom Out II
+        description: 缩小_II入场动画
+        value: '缩小_II'
+      - name: intro_feather_wipe_right
+        label:
+          zh_Hans: 羽化向右擦开
+          en_US: Feather Wipe Right
+        description: 羽化向右擦开入场动画
+        value: '羽化向右擦开'
+      - name: intro_feather_wipe_left
+        label:
+          zh_Hans: 羽化向左擦开
+          en_US: Feather Wipe Left
+        description: 羽化向左擦开入场动画
+        value: '羽化向左擦开'
+      - name: intro_flip
+        label:
+          zh_Hans: 翻动
+          en_US: Flip
+        description: 翻动入场动画
+        value: '翻动'
+      - name: intro_slight_zoom_in
+        label:
+          zh_Hans: 轻微放大
+          en_US: Slight Zoom In
+        description: 轻微放大入场动画
+        value: '轻微放大'
+      - name: intro_character_rotate
+        label:
+          zh_Hans: 逐字旋转
+          en_US: Character Rotate
+        description: 逐字旋转入场动画
+        value: '逐字旋转'
+      - name: intro_character_develop
+        label:
+          zh_Hans: 逐字显影
+          en_US: Character Develop
+        description: 逐字显影入场动画
+        value: '逐字显影'
+      - name: intro_character_flip
+        label:
+          zh_Hans: 逐字翻转
+          en_US: Character Flip
+        description: 逐字翻转入场动画
+        value: '逐字翻转'
+      - name: intro_flash
+        label:
+          zh_Hans: 闪动
+          en_US: Flash
+        description: 闪动入场动画
+        value: '闪动'
+      - name: intro_random_bounce
+        label:
+          zh_Hans: 随机弹跳
+          en_US: Random Bounce
+        description: 随机弹跳入场动画
+        value: '随机弹跳'
+      - name: intro_random_fly_in
+        label:
+          zh_Hans: 随机飞入
+          en_US: Random Fly In
+        description: 随机飞入入场动画
+        value: '随机飞入'
+
+  - name: intro_duration
+    type: string
+    required: false
+    label:
+      en_US: intro animation duration
+      zh_Hans: 入场动画时长（秒）
+      pt_BR: duração da animação de entrada
+    human_description:
+      en_US: "Set the duration of the intro animation (default 0.5 seconds)"
+      zh_Hans: "设置入场动画的持续时间（默认0.5秒）"
+      pt_BR: "Defina a duração da animação de entrada (padrão 0.5 segundos)"
+    llm_description: "Duration of the intro animation in seconds"
+    form: llm
+  - name: outro_animation
+    type: select
+    required: false
+    label:
+      en_US: outro animation type
+      zh_Hans: 退场动画类型
+      pt_BR: tipo de animação de saída
+    human_description:
+      en_US: "Select the animation type when the subtitle disappears"
+      zh_Hans: "选择字幕消失时的退场动画类型"
+      pt_BR: "Selecione o tipo de animação quando a legenda desaparece"
+    llm_description: "Type of animation used when the subtitle stops displaying"
+    form: form
+    options:
+      - name: intro_screen_rush
+        label:
+          zh_Hans: 冲屏位移
+          en_US: Screen Rush Displacement
+        description: 冲屏位移入场动画
+        value: '冲屏位移'
+      - name: intro_karaoke
+        label:
+          zh_Hans: 卡拉OK
+          en_US: Karaoke
+        description: 卡拉OK入场动画
+        value: '卡拉OK'
+      - name: intro_color_change_input
+        label:
+          zh_Hans: 变色输入
+          en_US: Color Change Input
+        description: 变色输入入场动画
+        value: '变色输入'
+      - name: intro_pop_in_top_right
+        label:
+          zh_Hans: 右上弹入
+          en_US: Pop In Top Right
+        description: 右上弹入入场动画
+        value: '右上弹入'
+      - name: intro_wipe_open_bottom_right
+        label:
+          zh_Hans: 右下擦开
+          en_US: Wipe Open Bottom Right
+        description: 右下擦开入场动画
+        value: '右下擦开'
+      - name: intro_wipe_up
+        label:
+          zh_Hans: 向上擦除
+          en_US: Wipe Up
+        description: 向上擦除入场动画
+        value: '向上擦除'
+      - name: intro_slide_up
+        label:
+          zh_Hans: 向上滑动
+          en_US: Slide Up
+        description: 向上滑动入场动画
+        value: '向上滑动'
+      - name: intro_flip_up
+        label:
+          zh_Hans: 向上翻转
+          en_US: Flip Up
+        description: 向上翻转入场动画
+        value: '向上翻转'
+      - name: intro_overlap_up
+        label:
+          zh_Hans: 向上重叠
+          en_US: Overlap Up
+        description: 向上重叠入场动画
+        value: '向上重叠'
+      - name: intro_reveal_up
+        label:
+          zh_Hans: 向上露出
+          en_US: Reveal Up
+        description: 向上露出入场动画
+        value: '向上露出'
+      - name: intro_wipe_down
+        label:
+          zh_Hans: 向下擦除
+          en_US: Wipe Down
+        description: 向下擦除入场动画
+        value: '向下擦除'
+      - name: intro_slide_down
+        label:
+          zh_Hans: 向下滑动
+          en_US: Slide Down
+        description: 向下滑动入场动画
+        value: '向下滑动'
+      - name: intro_reveal_down
+        label:
+          zh_Hans: 向下露出
+          en_US: Reveal Down
+        description: 向下露出入场动画
+        value: '向下露出'
+      - name: intro_fly_in_down
+        label:
+          zh_Hans: 向下飞入
+          en_US: Fly In Down
+        description: 向下飞入入场动画
+        value: '向下飞入'
+      - name: intro_wipe_right
+        label:
+          zh_Hans: 向右擦除
+          en_US: Wipe Right
+        description: 向右擦除入场动画
+        value: '向右擦除'
+      - name: intro_slide_right
+        label:
+          zh_Hans: 向右滑动
+          en_US: Slide Right
+        description: 向右滑动入场动画
+        value: '向右滑动'
+      - name: intro_ease_in_right
+        label:
+          zh_Hans: 向右缓入
+          en_US: Ease In Right
+        description: 向右缓入入场动画
+        value: '向右缓入'
+      - name: intro_gather_right
+        label:
+          zh_Hans: 向右集合
+          en_US: Gather Right
+        description: 向右集合入场动画
+        value: '向右集合'
+      - name: intro_reveal_right
+        label:
+          zh_Hans: 向右露出
+          en_US: Reveal Right
+        description: 向右露出入场动画
+        value: '向右露出'
+      - name: intro_wipe_left
+        label:
+          zh_Hans: 向左擦除
+          en_US: Wipe Left
+        description: 向左擦除入场动画
+        value: '向左擦除'
+      - name: intro_slide_left
+        label:
+          zh_Hans: 向左滑动
+          en_US: Slide Left
+        description: 向左滑动入场动画
+        value: '向左滑动'
+      - name: intro_reveal_left
+        label:
+          zh_Hans: 向左露出
+          en_US: Reveal Left
+        description: 向左露出入场动画
+        value: '向左露出'
+      - name: intro_circular_scan
+        label:
+          zh_Hans: 圆形扫描
+          en_US: Circular Scan
+        description: 圆形扫描入场动画
+        value: '圆形扫描'
+      - name: intro_vintage_typewriter
+        label:
+          zh_Hans: 复古打字机
+          en_US: Vintage Typewriter
+        description: 复古打字机入场动画
+        value: '复古打字机'
+      - name: intro_center_typing
+        label:
+          zh_Hans: 居中打字
+          en_US: Center Typing
+        description: 居中打字入场动画
+        value: '居中打字'
+      - name: intro_pop_in_top_left
+        label:
+          zh_Hans: 左上弹入
+          en_US: Pop In Top Left
+        description: 左上弹入入场动画
+        value: '左上弹入'
+      - name: intro_bounce_left
+        label:
+          zh_Hans: 左移弹动
+          en_US: Bounce Left
+        description: 左移弹动入场动画
+        value: '左移弹动'
+      - name: intro_curtain_open
+        label:
+          zh_Hans: 开幕
+          en_US: Curtain Open
+        description: 开幕入场动画
+        value: '开幕'
+      - name: intro_pop_in
+        label:
+          zh_Hans: 弹入
+          en_US: Pop In
+        description: 弹入入场动画
+        value: '弹入'
+      - name: intro_slingshot
+        label:
+          zh_Hans: 弹弓
+          en_US: Slingshot
+        description: 弹弓入场动画
+        value: '弹弓'
+      - name: intro_elastic_stretch
+        label:
+          zh_Hans: 弹性伸缩
+          en_US: Elastic Stretch
+        description: 弹性伸缩入场动画
+        value: '弹性伸缩'
+      - name: intro_spring
+        label:
+          zh_Hans: 弹簧
+          en_US: Spring
+        description: 弹簧入场动画
+        value: '弹簧'
+      - name: intro_color_mapping
+        label:
+          zh_Hans: 彩色映射
+          en_US: Color Mapping
+        description: 彩色映射入场动画
+        value: '彩色映射'
+      - name: intro_typewriter_i
+        label:
+          zh_Hans: 打字机_I
+          en_US: Typewriter I
+        description: 打字机_I入场动画
+        value: '打字机_I'
+      - name: intro_typewriter_ii
+        label:
+          zh_Hans: 打字机_II
+          en_US: Typewriter II
+        description: 打字机_II入场动画
+        value: '打字机_II'
+      - name: intro_typewriter_iii
+        label:
+          zh_Hans: 打字机_III
+          en_US: Typewriter III
+        description: 打字机_III入场动画
+        value: '打字机_III'
+      - name: intro_typewriter_iv
+        label:
+          zh_Hans: 打字机IV
+          en_US: Typewriter IV
+        description: 打字机IV入场动画
+        value: '打字机IV'
+      - name: intro_twist_blur
+        label:
+          zh_Hans: 扭曲模糊
+          en_US: Twist Blur
+        description: 扭曲模糊入场动画
+        value: '扭曲模糊'
+      - name: intro_trailing
+        label:
+          zh_Hans: 拖尾
+          en_US: Trailing
+        description: 拖尾入场动画
+        value: '拖尾'
+      - name: intro_gather
+        label:
+          zh_Hans: 收拢
+          en_US: Gather
+        description: 收拢入场动画
+        value: '收拢'
+      - name: intro_zoom_in
+        label:
+          zh_Hans: 放大
+          en_US: Zoom In
+        description: 放大入场动画
+        value: '放大'
+      - name: intro_glitch_typewriter
+        label:
+          zh_Hans: 故障打字机
+          en_US: Glitch Typewriter
+        description: 故障打字机入场动画
+        value: '故障打字机'
+      - name: intro_spin_in
+        label:
+          zh_Hans: 旋入
+          en_US: Spin In
+        description: 旋入入场动画
+        value: '旋入'
+      - name: intro_sunrise
+        label:
+          zh_Hans: 日出
+          en_US: Sunrise
+        description: 日出入场动画
+        value: '日出'
+      - name: intro_spread
+        label:
+          zh_Hans: 晕开
+          en_US: Spread
+        description: 晕开入场动画
+        value: '晕开'
+      - name: intro_blur
+        label:
+          zh_Hans: 模糊
+          en_US: Blur
+        description: 模糊入场动画
+        value: '模糊'
+      - name: intro_ink_spread
+        label:
+          zh_Hans: 水墨晕开
+          en_US: Ink Spread
+        description: 水墨晕开入场动画
+        value: '水墨晕开'
+      - name: intro_horizontal_flip
+        label:
+          zh_Hans: 水平翻转
+          en_US: Horizontal Flip
+        description: 水平翻转入场动画
+        value: '水平翻转'
+      - name: intro_wave_pop_in
+        label:
+          zh_Hans: 波浪弹入
+          en_US: Wave Pop In
+        description: 波浪弹入入场动画
+        value: '波浪弹入'
+      - name: intro_fade_in
+        label:
+          zh_Hans: 渐显
+          en_US: Fade In
+        description: 渐显入场动画
+        value: '渐显'
+      - name: intro_dissolve
+        label:
+          zh_Hans: 溶解
+          en_US: Dissolve
+        description: 溶解入场动画
+        value: '溶解'
+      - name: intro_slide_rise
+        label:
+          zh_Hans: 滑动上升
+          en_US: Slide Rise
+        description: 滑动上升入场动画
+        value: '滑动上升'
+      - name: intro_grow
+        label:
+          zh_Hans: 生长
+          en_US: Grow
+        description: 生长入场动画
+        value: '生长'
+      - name: intro_fling_out
+        label:
+          zh_Hans: 甩出
+          en_US: Fling Out
+        description: 甩出入场动画
+        value: '甩出'
+      - name: intro_stand_up
+        label:
+          zh_Hans: 站起
+          en_US: Stand Up
+        description: 站起入场动画
+        value: '站起'
+      - name: intro_zoom_out
+        label:
+          zh_Hans: 缩小
+          en_US: Zoom Out
+        description: 缩小入场动画
+        value: '缩小'
+      - name: intro_zoom_out_ii
+        label:
+          zh_Hans: 缩小_II
+          en_US: Zoom Out II
+        description: 缩小_II入场动画
+        value: '缩小_II'
+      - name: intro_feather_wipe_right
+        label:
+          zh_Hans: 羽化向右擦开
+          en_US: Feather Wipe Right
+        description: 羽化向右擦开入场动画
+        value: '羽化向右擦开'
+      - name: intro_feather_wipe_left
+        label:
+          zh_Hans: 羽化向左擦开
+          en_US: Feather Wipe Left
+        description: 羽化向左擦开入场动画
+        value: '羽化向左擦开'
+      - name: intro_flip
+        label:
+          zh_Hans: 翻动
+          en_US: Flip
+        description: 翻动入场动画
+        value: '翻动'
+      - name: intro_slight_zoom_in
+        label:
+          zh_Hans: 轻微放大
+          en_US: Slight Zoom In
+        description: 轻微放大入场动画
+        value: '轻微放大'
+      - name: intro_character_rotate
+        label:
+          zh_Hans: 逐字旋转
+          en_US: Character Rotate
+        description: 逐字旋转入场动画
+        value: '逐字旋转'
+      - name: intro_character_develop
+        label:
+          zh_Hans: 逐字显影
+          en_US: Character Develop
+        description: 逐字显影入场动画
+        value: '逐字显影'
+      - name: intro_character_flip
+        label:
+          zh_Hans: 逐字翻转
+          en_US: Character Flip
+        description: 逐字翻转入场动画
+        value: '逐字翻转'
+      - name: intro_flash
+        label:
+          zh_Hans: 闪动
+          en_US: Flash
+        description: 闪动入场动画
+        value: '闪动'
+      - name: intro_random_bounce
+        label:
+          zh_Hans: 随机弹跳
+          en_US: Random Bounce
+        description: 随机弹跳入场动画
+        value: '随机弹跳'
+      - name: intro_random_fly_in
+        label:
+          zh_Hans: 随机飞入
+          en_US: Random Fly In
+        description: 随机飞入入场动画
+        value: '随机飞入'
+  - name: outro_duration
+    type: string
+    required: false
+    label:
+      en_US: outro animation duration
+      zh_Hans: 退场动画时长（秒）
+      pt_BR: duração da animação de saída
+    human_description:
+      en_US: "Set the duration of the outro animation (default 0.5 seconds)"
+      zh_Hans: "设置退场动画的持续时间（默认0.5秒）"
+      pt_BR: "Defina a duração da animação de saída (padrão 0.5 segundos)"
+    llm_description: "Duration of the outro animation in seconds"
+    form: llm
+  - name: width
+    type: string
+    required: false
+    label:
+      en_US: video width (pixels)
+      zh_Hans: 视频宽度（像素）
+      pt_BR: largura do vídeo (pixels)
+    human_description:
+      en_US: "Specify the width of the video in pixels"
+      zh_Hans: "指定视频的宽度（以像素为单位）"
+      pt_BR: "Especifique a largura do vídeo em pixels"
+    llm_description: "Horizontal resolution of the video in pixels"
+    form: llm
+  - name: height
+    type: string
+    required: false
+    label:
+      en_US: video height (pixels)
+      zh_Hans: 视频高度（像素）
+      pt_BR: altura do vídeo (pixels)
+    human_description:
+      en_US: "Specify the height of the video in pixels"
+      zh_Hans: "指定视频的高度（以像素为单位）"
+      pt_BR: "Especifique a altura do vídeo em pixels"
+    llm_description: "Vertical resolution of the video in pixels"
+    form: llm
+  - name: fixed_width
+    type: string
+    required: false
+    label:
+      en_US: fixed width ratio
+      zh_Hans: 文本固定宽度比例
+      pt_BR: proporção de largura fixa
+    human_description:
+      en_US: "Set the fixed width ratio relative to video width (0.0-1.0, default -1)"
+      zh_Hans: "设置相对于视频宽度的固定宽度比例（0.0-1.0，默认-1不固定）"
+      pt_BR: "Defina a proporção de largura fixa em relação à largura do vídeo (0.0-1.0, padrão -1)"
+    llm_description: "Ratio of video width used for fixed text width (-1 = auto-adjust)"
+    form: llm
+  - name: fixed_height
+    type: string
+    required: false
+    label:
+      en_US: fixed height ratio
+      zh_Hans: 文本固定高度比例
+      pt_BR: proporção de altura fixa
+    human_description:
+      en_US: "Set the fixed height ratio relative to video height (0.0-1.0, default -1)"
+      zh_Hans: "设置相对于视频高度的固定高度比例（0.0-1.0，默认-1不固定）"
+      pt_BR: "Defina a proporção de altura fixa em relação à altura do vídeo (0.0-1.0, padrão -1)"
+    llm_description: "Ratio of video height used for fixed text height (-1 = auto-adjust)"
+    form: llm
+
+extra:
+  python:
+    source: tools/capcut_add_text.py

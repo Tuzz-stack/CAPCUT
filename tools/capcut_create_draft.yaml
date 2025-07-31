@@ -1,0 +1,60 @@
+identity:
+  name: "capcut_create_draft"
+  author: "zxf"
+  label:
+    en_US: "capcut_create_draft"
+    zh_Hans: "capcut_create_draft"
+    pt_BR: "capcut_create_draft"
+description:
+  human:
+    en_US: "capcut_create_draft"
+    zh_Hans: "capcut_create_draft"
+    pt_BR: "capcut_create_draft"
+  llm: "capcut_create_draft"
+parameters:
+  - name: draft_id
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: draft_id
+      zh_Hans: 草稿的id，不填写会系统生成
+      pt_BR: draft_id
+    human_description:
+      en_US: "draft_id"
+      zh_Hans: "draft_id"
+      pt_BR: "draft_id"
+    llm_description: "draft_id"
+    form: llm
+  - name: draft_width
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: draft_width
+      zh_Hans: 草稿宽度（默认1080）
+      pt_BR: draft_width
+    human_description:
+      en_US: "draft_width"
+      zh_Hans: "draft_width"
+      pt_BR: "draft_width"
+    llm_description: "draft_width"
+    form: llm
+  - name: draft_height
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: draft_height
+      zh_Hans: 草稿的长度（默认1920）
+      pt_BR: draft_height
+    human_description:
+      en_US: "draft_height"
+      zh_Hans: "draft_height"
+      pt_BR: "draft_height"
+    llm_description: "draft_height"
+    form: llm
+
+extra:
+  python:
+    source: tools/capcut_create_draft.py

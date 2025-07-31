@@ -1,0 +1,1163 @@
+identity:
+  name: "capcut_add_effect"
+  author: "zxf"
+  label:
+    en_US: "capcut_add_effect"
+    zh_Hans: "capcut_add_effect"
+    pt_BR: "capcut_add_effect"
+description:
+  human:
+    en_US: "capcut_add_effect"
+    zh_Hans: "capcut_add_effect"
+    pt_BR: "capcut_add_effect"
+  llm: "capcut_add_effect"
+parameters:
+  - name: effect_type
+    type: select
+    required: true
+    default: "None"
+    label:
+      en_US: effect_type
+      zh_Hans: 效果类型
+      pt_BR: effect_type
+    human_description:
+      en_US: "Effect type name, will be matched from Video_scene_effect_type or Video_character_effect_type"
+      zh_Hans: "效果类型名称，需从Video_scene_effect_type或Video_character_effect_type中匹配"
+      pt_BR: "Nome do tipo de efeito, será correspondido a partir de Video_scene_effect_type ou Video_character_effect_type"
+    llm_description: "Effect type name that must be matched from Video_scene_effect_type or Video_character_effect_type"
+    form: form
+    options:
+      - name: effect_type_1
+        label:
+          zh_Hans: _1998
+          en_US: _1998
+        description: _1998
+        value: '_1998'
+      - name: effect_type_2
+        label:
+          zh_Hans: _70s
+          en_US: _70s
+        description: _70s
+        value: '_70s'
+      - name: effect_type_3
+        label:
+          zh_Hans: _90s画质
+          en_US: _90s画质
+        description: _90s画质
+        value: '_90s画质'
+      - name: effect_type_4
+        label:
+          zh_Hans: DV录制框
+          en_US: DV录制框
+        description: DV录制框
+        value: 'DV录制框'
+      - name: effect_type_5
+        label:
+          zh_Hans: DV界面
+          en_US: DV界面
+        description: DV界面
+        value: 'DV界面'
+      - name: effect_type_6
+        label:
+          zh_Hans: I_Lose_You
+          en_US: I_Lose_You
+        description: I_Lose_You
+        value: 'I_Lose_You'
+      - name: effect_type_7
+        label:
+          zh_Hans: I_Love_You
+          en_US: I_Love_You
+        description: I_Love_You
+        value: 'I_Love_You'
+      - name: effect_type_8
+        label:
+          zh_Hans: JVC
+          en_US: JVC
+        description: JVC
+        value: 'JVC'
+      - name: effect_type_9
+        label:
+          zh_Hans: List边框
+          en_US: List边框
+        description: List边框
+        value: 'List边框'
+      - name: effect_type_10
+        label:
+          zh_Hans: MV封面
+          en_US: MV封面
+        description: MV封面
+        value: 'MV封面'
+      - name: effect_type_11
+        label:
+          zh_Hans: New_Year
+          en_US: New_Year
+        description: New_Year
+        value: 'New_Year'
+      - name: effect_type_12
+        label:
+          zh_Hans: PS边框
+          en_US: PS边框
+        description: PS边框
+        value: 'PS边框'
+      - name: effect_type_13
+        label:
+          zh_Hans: RGB描边
+          en_US: RGB描边
+        description: RGB描边
+        value: 'RGB描边'
+      - name: effect_type_14
+        label:
+          zh_Hans: VCR
+          en_US: VCR
+        description: VCR
+        value: 'VCR'
+      - name: effect_type_15
+        label:
+          zh_Hans: X_Signal
+          en_US: X_Signal
+        description: X_Signal
+        value: 'X_Signal'
+      - name: effect_type_16
+        label:
+          zh_Hans: X开幕
+          en_US: X开幕
+        description: X开幕
+        value: 'X开幕'
+      - name: effect_type_17
+        label:
+          zh_Hans: betamax
+          en_US: betamax
+        description: betamax
+        value: 'betamax'
+      - name: effect_type_18
+        label:
+          zh_Hans: emoji钻石
+          en_US: emoji钻石
+        description: emoji钻石
+        value: 'emoji钻石'
+      - name: effect_type_19
+        label:
+          zh_Hans: ins界面
+          en_US: ins界面
+        description: ins界面
+        value: 'ins界面'
+      - name: effect_type_20
+        label:
+          zh_Hans: ins风放大镜
+          en_US: ins风放大镜
+        description: ins风放大镜
+        value: 'ins风放大镜'
+      - name: effect_type_21
+        label:
+          zh_Hans: kirakira
+          en_US: kirakira
+        description: kirakira
+        value: 'kirakira'
+      - name: effect_type_22
+        label:
+          zh_Hans: ktv灯光
+          en_US: ktv灯光
+        description: ktv灯光
+        value: 'ktv灯光'
+      - name: effect_type_23
+        label:
+          zh_Hans: ktv灯光_II
+          en_US: ktv灯光_II
+        description: ktv灯光_II
+        value: 'ktv灯光_II'
+      - name: effect_type_24
+        label:
+          zh_Hans: windows弹窗关闭
+          en_US: windows弹窗关闭
+        description: windows弹窗关闭
+        value: 'windows弹窗关闭'
+      - name: effect_type_25
+        label:
+          zh_Hans: windows弹窗打开
+          en_US: windows弹窗打开
+        description: windows弹窗打开
+        value: 'windows弹窗打开'
+      - name: effect_type_26
+        label:
+          zh_Hans: 丁达尔光线
+          en_US: 丁达尔光线
+        description: 丁达尔光线
+        value: '丁达尔光线'
+      - name: effect_type_27
+        label:
+          zh_Hans: 万圣emoji
+          en_US: 万圣emoji
+        description: 万圣emoji
+        value: '万圣emoji'
+      - name: effect_type_28
+        label:
+          zh_Hans: 万圣夜
+          en_US: 万圣夜
+        description: 万圣夜
+        value: '万圣夜'
+      - name: effect_type_29
+        label:
+          zh_Hans: 三屏
+          en_US: 三屏
+        description: 三屏
+        value: '三屏'
+      - name: effect_type_30
+        label:
+          zh_Hans: 三格漫画
+          en_US: 三格漫画
+        description: 三格漫画
+        value: '三格漫画'
+      - name: effect_type_31
+        label:
+          zh_Hans: 下雨
+          en_US: 下雨
+        description: 下雨
+        value: '下雨'
+      - name: effect_type_32
+        label:
+          zh_Hans: 不对劲
+          en_US: 不对劲
+        description: 不对劲
+        value: '不对劲'
+      - name: effect_type_33
+        label:
+          zh_Hans: 不规则黑框
+          en_US: 不规则黑框
+        description: 不规则黑框
+        value: '不规则黑框'
+      - name: effect_type_34
+        label:
+          zh_Hans: 两屏
+          en_US: 两屏
+        description: 两屏
+        value: '两屏'
+      - name: effect_type_35
+        label:
+          zh_Hans: 中枪了
+          en_US: 中枪了
+        description: 中枪了
+        value: '中枪了'
+      - name: effect_type_36
+        label:
+          zh_Hans: 乌鸦飞过
+          en_US: 乌鸦飞过
+        description: 乌鸦飞过
+        value: '乌鸦飞过'
+      - name: effect_type_37
+        label:
+          zh_Hans: 九屏
+          en_US: 九屏
+        description: 九屏
+        value: '九屏'
+      - name: effect_type_38
+        label:
+          zh_Hans: 九屏跑马灯
+          en_US: 九屏跑马灯
+        description: 九屏跑马灯
+        value: '九屏跑马灯'
+      - name: effect_type_39
+        label:
+          zh_Hans: 亮片
+          en_US: 亮片
+        description: 亮片
+        value: '亮片'
+      - name: effect_type_40
+        label:
+          zh_Hans: 人鱼滤镜
+          en_US: 人鱼滤镜
+        description: 人鱼滤镜
+        value: '人鱼滤镜'
+      - name: effect_type_41
+        label:
+          zh_Hans: 仙女变身
+          en_US: 仙女变身
+        description: 仙女变身
+        value: '仙女变身'
+      - name: effect_type_42
+        label:
+          zh_Hans: 仙女变身 II
+          en_US: 仙女变身 II
+        description: 仙女变身 II
+        value: '仙女变身 II'
+      - name: effect_type_43
+        label:
+          zh_Hans: 仙女棒
+          en_US: 仙女棒
+        description: 仙女棒
+        value: '仙女棒'
+      - name: effect_type_44
+        label:
+          zh_Hans: 仙尘闪闪
+          en_US: 仙尘闪闪
+        description: 仙尘闪闪
+        value: '仙尘闪闪'
+      - name: effect_type_45
+        label:
+          zh_Hans: 低像素
+          en_US: 低像素
+        description: 低像素
+        value: '低像素'
+      - name: effect_type_46
+        label:
+          zh_Hans: 低像素 II
+          en_US: 低像素 II
+        description: 低像素 II
+        value: '低像素 II'
+      - name: effect_type_47
+        label:
+          zh_Hans: 倒计时 II
+          en_US: 倒计时 II
+        description: 倒计时 II
+        value: '倒计时 II'
+      - name: effect_type_48
+        label:
+          zh_Hans: 像素画
+          en_US: 像素画
+        description: 像素画
+        value: '像素画'
+      - name: effect_type_49
+        label:
+          zh_Hans: 像素纹理
+          en_US: 像素纹理
+        description: 像素纹理
+        value: '像素纹理'
+      - name: effect_type_50
+        label:
+          zh_Hans: 光斑虚化
+          en_US: 光斑虚化
+        description: 光斑虚化
+        value: '光斑虚化'
+      - name: effect_type_51
+        label:
+          zh_Hans: 光斑飘落
+          en_US: 光斑飘落
+        description: 光斑飘落
+        value: '光斑飘落'
+      - name: effect_type_52
+        label:
+          zh_Hans: 光晕
+          en_US: 光晕
+        description: 光晕
+        value: '光晕'
+      - name: effect_type_53
+        label:
+          zh_Hans: 光晕 II
+          en_US: 光晕 II
+        description: 光晕 II
+        value: '光晕 II'
+      - name: effect_type_54
+        label:
+          zh_Hans: 全剧终
+          en_US: 全剧终
+        description: 全剧终
+        value: '全剧终'
+      - name: effect_type_55
+        label:
+          zh_Hans: 六屏
+          en_US: 六屏
+        description: 六屏
+        value: '六屏'
+      - name: effect_type_56
+        label:
+          zh_Hans: 关月亮
+          en_US: 关月亮
+        description: 关月亮
+        value: '关月亮'
+      - name: effect_type_57
+        label:
+          zh_Hans: 冰冷实验室
+          en_US: 冰冷实验室
+        description: 冰冷实验室
+        value: '冰冷实验室'
+      - name: effect_type_58
+        label:
+          zh_Hans: 冰霜
+          en_US: 冰霜
+        description: 冰霜
+        value: '冰霜'
+      - name: effect_type_59
+        label:
+          zh_Hans: 冰霜 II
+          en_US: 冰霜 II
+        description: 冰霜 II
+        value: '冰霜 II'
+      - name: effect_type_60
+        label:
+          zh_Hans: 冲击波
+          en_US: 冲击波
+        description: 冲击波
+        value: '冲击波'
+      - name: effect_type_61
+        label:
+          zh_Hans: 冲刺
+          en_US: 冲刺
+        description: 冲刺
+        value: '冲刺'
+      - name: effect_type_62
+        label:
+          zh_Hans: 冲刺 II
+          en_US: 冲刺 II
+        description: 冲刺 II
+        value: '冲刺 II'
+      - name: effect_type_63
+        label:
+          zh_Hans: 冲刺 III
+          en_US: 冲刺 III
+        description: 冲刺 III
+        value: '冲刺 III'
+      - name: effect_type_64
+        label:
+          zh_Hans: 冲屏闪粉
+          en_US: 冲屏闪粉
+        description: 冲屏闪粉
+        value: '冲屏闪粉'
+      - name: effect_type_65
+        label:
+          zh_Hans: 凄凉
+          en_US: 凄凉
+        description: 凄凉
+        value: '凄凉'
+      - name: effect_type_66
+        label:
+          zh_Hans: 几何图形
+          en_US: 几何图形
+        description: 几何图形
+        value: '几何图形'
+      - name: effect_type_67
+        label:
+          zh_Hans: 刀光剑影
+          en_US: 刀光剑影
+        description: 刀光剑影
+        value: '刀光剑影'
+      - name: effect_type_68
+        label:
+          zh_Hans: 分屏开幕
+          en_US: 分屏开幕
+        description: 分屏开幕
+        value: '分屏开幕'
+      - name: effect_type_69
+        label:
+          zh_Hans: 初雪 I
+          en_US: 初雪 I
+        description: 初雪 I
+        value: '初雪 I'
+      - name: effect_type_70
+        label:
+          zh_Hans: 加载甜蜜
+          en_US: 加载甜蜜
+        description: 加载甜蜜
+        value: '加载甜蜜'
+      - name: effect_type_71
+        label:
+          zh_Hans: 动感模糊
+          en_US: 动感模糊
+        description: 动感模糊
+        value: '动感模糊'
+      - name: effect_type_72
+        label:
+          zh_Hans: 动感荧光
+          en_US: 动感荧光
+        description: 动感荧光
+        value: '动感荧光'
+      - name: effect_type_73
+        label:
+          zh_Hans: 动感蓝带
+          en_US: 动感蓝带
+        description: 动感蓝带
+        value: '动感蓝带'
+      - name: effect_type_74
+        label:
+          zh_Hans: 单色涂鸦
+          en_US: 单色涂鸦
+        description: 单色涂鸦
+        value: '单色涂鸦'
+      - name: effect_type_75
+        label:
+          zh_Hans: 南瓜光斑
+          en_US: 南瓜光斑
+        description: 南瓜光斑
+        value: '南瓜光斑'
+      - name: effect_type_76
+        label:
+          zh_Hans: 南瓜笑脸
+          en_US: 南瓜笑脸
+        description: 南瓜笑脸
+        value: '南瓜笑脸'
+      - name: effect_type_77
+        label:
+          zh_Hans: 卷动
+          en_US: 卷动
+        description: 卷动
+        value: '卷动'
+      - name: effect_type_78
+        label:
+          zh_Hans: 原相机
+          en_US: 原相机
+        description: 原相机
+        value: '原相机'
+      - name: effect_type_79
+        label:
+          zh_Hans: 友友商店
+          en_US: 友友商店
+        description: 友友商店
+        value: '友友商店'
+      - name: effect_type_80
+        label:
+          zh_Hans: 反转片 I
+          en_US: 反转片 I
+        description: 反转片 I
+        value: '反转片 I'
+      - name: effect_type_81
+        label:
+          zh_Hans: 发光
+          en_US: 发光
+        description: 发光
+        value: '发光'
+      - name: effect_type_82
+        label:
+          zh_Hans: 取景框
+          en_US: 取景框
+        description: 取景框
+        value: '取景框'
+      - name: effect_type_83
+        label:
+          zh_Hans: 取景框 II
+          en_US: 取景框 II
+        description: 取景框 II
+        value: '取景框 II'
+      - name: effect_type_84
+        label:
+          zh_Hans: 变形了
+          en_US: 变形了
+        description: 变形了
+        value: '变形了'
+      - name: effect_type_85
+        label:
+          zh_Hans: 变彩色
+          en_US: 变彩色
+        description: 变彩色
+        value: '变彩色'
+      - name: effect_type_86
+        label:
+          zh_Hans: 变清晰
+          en_US: 变清晰
+        description: 变清晰
+        value: '变清晰'
+      - name: effect_type_87
+        label:
+          zh_Hans: 变清晰 II
+          en_US: 变清晰 II
+        description: 变清晰 II
+        value: '变清晰 II'
+      - name: effect_type_88
+        label:
+          zh_Hans: 变焦推镜
+          en_US: 变焦推镜
+        description: 变焦推镜
+        value: '变焦推镜'
+      - name: effect_type_89
+        label:
+          zh_Hans: 变秋天
+          en_US: 变秋天
+        description: 变秋天
+        value: '变秋天'
+      - name: effect_type_90
+        label:
+          zh_Hans: 变黑白
+          en_US: 变黑白
+        description: 变黑白
+        value: '变黑白'
+      - name: effect_type_91
+        label:
+          zh_Hans: 告白氛围
+          en_US: 告白氛围
+        description: 告白氛围
+        value: '告白氛围'
+      - name: effect_type_92
+        label:
+          zh_Hans: 咔嚓
+          en_US: 咔嚓
+        description: 咔嚓
+        value: '咔嚓'
+      - name: effect_type_93
+        label:
+          zh_Hans: 哈哈弹幕
+          en_US: 哈哈弹幕
+        description: 哈哈弹幕
+        value: '哈哈弹幕'
+      - name: effect_type_94
+        label:
+          zh_Hans: 哈苏胶片
+          en_US: 哈苏胶片
+        description: 哈苏胶片
+        value: '哈苏胶片'
+      - name: effect_type_95
+        label:
+          zh_Hans: 唱片
+          en_US: 唱片
+        description: 唱片
+        value: '唱片'
+      - name: effect_type_96
+        label:
+          zh_Hans: 唱片封面
+          en_US: 唱片封面
+        description: 唱片封面
+        value: '唱片封面'
+      - name: effect_type_97
+        label:
+          zh_Hans: 啊啊啊啊
+          en_US: 啊啊啊啊
+        description: 啊啊啊啊
+        value: '啊啊啊啊'
+      - name: effect_type_98
+        label:
+          zh_Hans: 噪点
+          en_US: 噪点
+        description: 噪点
+        value: '噪点'
+      - name: effect_type_99
+        label:
+          zh_Hans: 四屏
+          en_US: 四屏
+        description: 四屏
+        value: '四屏'
+      - name: effect_type_100
+        label:
+          zh_Hans: 回弹摇摆
+          en_US: 回弹摇摆
+        description: 回弹摇摆
+        value: '回弹摇摆'
+      - name: effect_type_101
+        label:
+          zh_Hans: 回忆文件夹
+          en_US: 回忆文件夹
+        description: 回忆文件夹
+        value: '回忆文件夹'
+      - name: effect_type_102
+        label:
+          zh_Hans: 回忆胶片
+          en_US: 回忆胶片
+        description: 回忆胶片
+        value: '回忆胶片'
+      - name: effect_type_103
+        label:
+          zh_Hans: 圆形虚线放大镜
+          en_US: 圆形虚线放大镜
+        description: 圆形虚线放大镜
+        value: '圆形虚线放大镜'
+      - name: effect_type_104
+        label:
+          zh_Hans: 圣诞光斑
+          en_US: 圣诞光斑
+        description: 圣诞光斑
+        value: '圣诞光斑'
+      - name: effect_type_105
+        label:
+          zh_Hans: 圣诞星光
+          en_US: 圣诞星光
+        description: 圣诞星光
+        value: '圣诞星光'
+      - name: effect_type_106
+        label:
+          zh_Hans: 地狱使者
+          en_US: 地狱使者
+        description: 地狱使者
+        value: '地狱使者'
+      - name: effect_type_107
+        label:
+          zh_Hans: 基础黑框
+          en_US: 基础黑框
+        description: 基础黑框
+        value: '基础黑框'
+      - name: effect_type_108
+        label:
+          zh_Hans: 塑料封面
+          en_US: 塑料封面
+        description: 塑料封面
+        value: '塑料封面'
+      - name: effect_type_109
+        label:
+          zh_Hans: 塑料封面 II
+          en_US: 塑料封面 II
+        description: 塑料封面 II
+        value: '塑料封面 II'
+      - name: effect_type_110
+        label:
+          zh_Hans: 塑料封面III
+          en_US: 塑料封面III
+        description: 塑料封面III
+        value: '塑料封面III'
+      - name: effect_type_111
+        label:
+          zh_Hans: 复古DV
+          en_US: 复古DV
+        description: 复古DV
+        value: '复古DV'
+      - name: effect_type_112
+        label:
+          zh_Hans: 复古DV II
+          en_US: 复古DV II
+        description: 复古DV II
+        value: '复古DV II'
+      - name: effect_type_113
+        label:
+          zh_Hans: 复古DV III
+          en_US: 复古DV III
+        description: 复古DV III
+        value: '复古DV III'
+      - name: effect_type_114
+        label:
+          zh_Hans: 复古DV IV
+          en_US: 复古DV IV
+        description: 复古DV IV
+        value: '复古DV IV'
+      - name: effect_type_115
+        label:
+          zh_Hans: 复古发光
+          en_US: 复古发光
+        description: 复古发光
+        value: '复古发光'
+      - name: effect_type_116
+        label:
+          zh_Hans: 复古多格
+          en_US: 复古多格
+        description: 复古多格
+        value: '复古多格'
+      - name: effect_type_117
+        label:
+          zh_Hans: 复古弹窗 I
+          en_US: 复古弹窗 I
+        description: 复古弹窗 I
+        value: '复古弹窗 I'
+      - name: effect_type_118
+        label:
+          zh_Hans: 复古弹窗 II
+          en_US: 复古弹窗 II
+        description: 复古弹窗 II
+        value: '复古弹窗 II'
+      - name: effect_type_119
+        label:
+          zh_Hans: 复古漫画
+          en_US: 复古漫画
+        description: 复古漫画
+        value: '复古漫画'
+      - name: effect_type_120
+        label:
+          zh_Hans: 复古甜心
+          en_US: 复古甜心
+        description: 复古甜心
+        value: '复古甜心'
+      - name: effect_type_121
+        label:
+          zh_Hans: 复古碎钻
+          en_US: 复古碎钻
+        description: 复古碎钻
+        value: '复古碎钻'
+      - name: effect_type_122
+        label:
+          zh_Hans: 复古蓝调
+          en_US: 复古蓝调
+        description: 复古蓝调
+        value: '复古蓝调'
+      - name: effect_type_123
+        label:
+          zh_Hans: 夏日冰块
+          en_US: 夏日冰块
+        description: 夏日冰块
+        value: '夏日冰块'
+      - name: effect_type_124
+        label:
+          zh_Hans: 夏日泡泡 I
+          en_US: 夏日泡泡 I
+        description: 夏日泡泡 I
+        value: '夏日泡泡 I'
+      - name: effect_type_125
+        label:
+          zh_Hans: 夕阳
+          en_US: 夕阳
+        description: 夕阳
+        value: '夕阳'
+      - name: effect_type_126
+        label:
+          zh_Hans: 夕阳 II
+          en_US: 夕阳 II
+        description: 夕阳 II
+        value: '夕阳 II'
+      - name: effect_type_127
+        label:
+          zh_Hans: 夕阳 III
+          en_US: 夕阳 III
+        description: 夕阳 III
+        value: '夕阳 III'
+      - name: effect_type_128
+        label:
+          zh_Hans: 夜蝶
+          en_US: 夜蝶
+        description: 夜蝶
+        value: '夜蝶'
+      - name: effect_type_129
+        label:
+          zh_Hans: 夜视框
+          en_US: 夜视框
+        description: 夜视框
+        value: '夜视框'
+      - name: effect_type_130
+        label:
+          zh_Hans: 大雪
+          en_US: 大雪
+        description: 大雪
+        value: '大雪'
+      - name: effect_type_131
+        label:
+          zh_Hans: 大雪纷飞
+          en_US: 大雪纷飞
+        description: 大雪纷飞
+        value: '大雪纷飞'
+      - name: effect_type_132
+        label:
+          zh_Hans: 天使光
+          en_US: 天使光
+        description: 天使光
+        value: '天使光'
+      - name: effect_type_133
+        label:
+          zh_Hans: 天使降临
+          en_US: 天使降临
+        description: 天使降临
+        value: '天使降临'
+      - name: effect_type_134
+        label:
+          zh_Hans: 失焦
+          en_US: 失焦
+        description: 失焦
+        value: '失焦'
+      - name: effect_type_135
+        label:
+          zh_Hans: 夸夸弹幕
+          en_US: 夸夸弹幕
+        description: 夸夸弹幕
+        value: '夸夸弹幕'
+      - name: effect_type_136
+        label:
+          zh_Hans: 夺冠
+          en_US: 夺冠
+        description: 夺冠
+        value: '夺冠'
+      - name: effect_type_137
+        label:
+          zh_Hans: 孔明灯
+          en_US: 孔明灯
+        description: 孔明灯
+        value: '孔明灯'
+      - name: effect_type_138
+        label:
+          zh_Hans: 孔明灯 II
+          en_US: 孔明灯 II
+        description: 孔明灯 II
+        value: '孔明灯 II'
+      - name: effect_type_139
+        label:
+          zh_Hans: 字幕投影
+          en_US: 字幕投影
+        description: 字幕投影
+        value: '字幕投影'
+      - name: effect_type_140
+        label:
+          zh_Hans: 字幕投影 II
+          en_US: 字幕投影 II
+        description: 字幕投影 II
+        value: '字幕投影 II'
+      - name: effect_type_141
+        label:
+          zh_Hans: 字幕投影 III
+          en_US: 字幕投影 III
+        description: 字幕投影 III
+        value: '字幕投影 III'
+      - name: effect_type_142
+        label:
+          zh_Hans: 字幕投影 IV
+          en_US: 字幕投影 IV
+        description: 字幕投影 IV
+        value: '字幕投影 IV'
+      - name: effect_type_143
+        label:
+          zh_Hans: 定格闪烁
+          en_US: 定格闪烁
+        description: 定格闪烁
+        value: '定格闪烁'
+      - name: effect_type_144
+        label:
+          zh_Hans: 小剧场
+          en_US: 小剧场
+        description: 小剧场
+        value: '小剧场'
+      - name: effect_type_145
+        label:
+          zh_Hans: 小动物
+          en_US: 小动物
+        description: 小动物
+        value: '小动物'
+      - name: effect_type_146
+        label:
+          zh_Hans: 小花花
+          en_US: 小花花
+        description: 小花花
+        value: '小花花'
+      - name: effect_type_147
+        label:
+          zh_Hans: 少女心
+          en_US: 少女心
+        description: 少女心
+        value: '少女心'
+      - name: effect_type_148
+        label:
+          zh_Hans: 少女心事
+          en_US: 少女心事
+        description: 少女心事
+        value: '少女心事'
+      - name: effect_type_149
+        label:
+          zh_Hans: 少女星闪
+          en_US: 少女星闪
+        description: 少女星闪
+        value: '少女星闪'
+      - name: effect_type_150
+        label:
+          zh_Hans: 左右摇晃
+          en_US: 左右摇晃
+        description: 左右摇晃
+        value: '左右摇晃'
+      - name: effect_type_151
+        label:
+          zh_Hans: 布拉格
+          en_US: 布拉格
+        description: 布拉格
+        value: '布拉格'
+      - name: effect_type_152
+        label:
+          zh_Hans: 幻彩文字
+          en_US: 幻彩文字
+        description: 幻彩文字
+        value: '幻彩文字'
+      - name: effect_type_153
+        label:
+          zh_Hans: 幻影
+          en_US: 幻影
+        description: 幻影
+        value: '幻影'
+      - name: effect_type_154
+        label:
+          zh_Hans: 幻影 II
+          en_US: 幻影 II
+        description: 幻影 II
+        value: '幻影 II'
+      - name: effect_type_155
+        label:
+          zh_Hans: 幻术摇摆
+          en_US: 幻术摇摆
+        description: 幻术摇摆
+        value: '幻术摇摆'
+      - name: effect_type_156
+        label:
+          zh_Hans: 幻觉
+          en_US: 幻觉
+        description: 幻觉
+        value: '幻觉'
+      - name: effect_type_157
+        label:
+          zh_Hans: 广角
+          en_US: 广角
+        description: 广角
+        value: '广角'
+      - name: effect_type_158
+        label:
+          zh_Hans: 庆祝彩带
+          en_US: 庆祝彩带
+        description: 庆祝彩带
+        value: '庆祝彩带'
+      - name: effect_type_159
+        label:
+          zh_Hans: 开幕
+          en_US: 开幕
+        description: 开幕
+        value: '开幕'
+      - name: effect_type_160
+        label:
+          zh_Hans: 开幕  II
+          en_US: 开幕  II
+        description: 开幕  II
+        value: '开幕  II'
+      - name: effect_type_161
+        label:
+          zh_Hans: 强锐化
+          en_US: 强锐化
+        description: 强锐化
+        value: '强锐化'
+      - name: effect_type_162
+        label:
+          zh_Hans: 录像带
+          en_US: 录像带
+        description: 录像带
+        value: '录像带'
+      - name: effect_type_163
+        label:
+          zh_Hans: 录像带 II
+          en_US: 录像带 II
+        description: 录像带 II
+        value: '录像带 II'
+      - name: effect_type_164
+        label:
+          zh_Hans: 录像带 III
+          en_US: 录像带 III
+        description: 录像带 III
+        value: '录像带 III'
+      - name: effect_type_165
+        label:
+          zh_Hans: 录制框
+          en_US: 录制框
+        description: 录制框
+        value: '录制框'
+      - name: effect_type_166
+        label:
+          zh_Hans: 录制边框
+          en_US: 录制边框
+        description: 录制边框
+        value: '录制边框'
+      - name: effect_type_167
+        label:
+          zh_Hans: 录制边框 II
+          en_US: 录制边框 II
+        description: 录制边框 II
+        value: '录制边框 II'
+      - name: effect_type_168
+        label:
+          zh_Hans: 录制边框 III
+          en_US: 录制边框 III
+        description: 录制边框 III
+        value: '录制边框 III'
+      - name: effect_type_169
+        label:
+          zh_Hans: 录制边框 IIII
+          en_US: 录制边框 IIII
+        description: 录制边框 IIII
+        value: '录制边框 IIII'
+      - name: effect_type_170
+        label:
+          zh_Hans: 彩信
+          en_US: 彩信
+        description: 彩信
+        value: '彩信'
+      - name: effect_type_171
+        label:
+          zh_Hans: 彩噪画质
+          en_US: 彩噪画质
+        description: 彩噪画质
+        value: '彩噪画质'
+      - name: effect_type_172
+        label:
+          zh_Hans: 彩带
+          en_US: 彩带
+        description: 彩带
+        value: '彩带'
+  - name: start
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: start time (seconds)
+      zh_Hans: 开始时间（秒）
+      pt_BR: hora de início (segundos)
+    human_description:
+      en_US: "Start time of the effect in seconds"
+      zh_Hans: "效果的开始时间（秒）"
+      pt_BR: "Hora de início do efeito em segundos"
+    llm_description: "Start time of the effect in seconds, default is 0"
+    form: llm
+  - name: end
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: end time (seconds)
+      zh_Hans: 结束时间（秒）
+      pt_BR: hora de término (segundos)
+    human_description:
+      en_US: "End time of the effect in seconds"
+      zh_Hans: "效果的结束时间（秒）"
+      pt_BR: "Hora de término do efeito em segundos"
+    llm_description: "End time of the effect in seconds, default is 3 seconds"
+    form: llm
+  - name: draft_id
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: draft_id
+      zh_Hans: 草稿ID，不填写会系统生成
+      pt_BR: draft_id
+    human_description:
+      en_US: "Draft ID, a new draft will be created if not provided or corresponding zip file not found"
+      zh_Hans: "草稿ID，若未提供或对应的zip文件未找到，将创建新草稿"
+      pt_BR: "ID do rascunho, um novo rascunho será criado se não fornecido ou arquivo zip correspondente não encontrado"
+    llm_description: "Draft ID, if None or corresponding zip file not found, a new draft will be created"
+    form: llm
+  - name: track_name
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: track name
+      zh_Hans: 轨道名称
+      pt_BR: nome da faixa
+    human_description:
+      en_US: "Name of the track, can be omitted when there is only one effect track"
+      zh_Hans: "轨道的名称，当只有一个效果轨道时可省略"
+      pt_BR: "Nome da faixa, pode ser omitido quando houver apenas uma faixa de efeito"
+    llm_description: "Track name, optional when there is only one effect track"
+    form: llm
+  - name: params
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: effect parameter list
+      zh_Hans: 效果参数列表,输入形式请严格遵照：[a,b,c]，其中abc均为0～100的整数值。
+      pt_BR: lista de parâmetros de efeito
+    human_description:
+      en_US: "List of effect parameters, default values will be used for items not provided or set to None"
+      zh_Hans: "效果的参数列表，未提供或为None的参数项将使用默认值"
+      pt_BR: "Lista de parâmetros de efeito, valores padrão serão usados para itens não fornecidos ou definidos como None"
+    llm_description: "Effect parameter list where unset or None items use default values"
+    form: llm
+  - name: width
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: video width
+      zh_Hans: 视频宽度
+      pt_BR: largura do vídeo
+    human_description:
+      en_US: "Width of the video"
+      zh_Hans: "视频的宽度"
+      pt_BR: "Largura do vídeo"
+    llm_description: "Video width, default is 1080"
+    form: llm
+  - name: height
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: video height
+      zh_Hans: 视频高度
+      pt_BR: altura do vídeo
+    human_description:
+      en_US: "Height of the video"
+      zh_Hans: "视频的高度"
+      pt_BR: "Altura do vídeo"
+    llm_description: "Video height, default is 1920"
+    form: llm
+
+extra:
+  python:
+    source: tools/capcut_add_effect.py

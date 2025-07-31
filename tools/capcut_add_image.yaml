@@ -1,0 +1,1538 @@
+identity:
+  name: "capcut_add_image"
+  author: "zxf"
+  label:
+    en_US: "capcut_add_image"
+    zh_Hans: "capcut_add_image"
+    pt_BR: "capcut_add_image"
+description:
+  human:
+    en_US: "capcut_add_image"
+    zh_Hans: "capcut_add_image"
+    pt_BR: "capcut_add_image"
+  llm: "capcut_add_image"
+parameters:
+  # 草稿文件夹路径（非select，string类型）
+  - name: draft_folder
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: draft_folder
+      zh_Hans: 草稿文件夹路径
+      pt_BR: pasta_do_rascunho
+    human_description:
+      en_US: "Path to the draft folder (optional)"
+      zh_Hans: "草稿文件夹路径（可选）"
+      pt_BR: "Caminho da pasta do rascunho (opcional)"
+    llm_description: "Optional folder path for the draft"
+    form: llm
+
+  # 图片URL（非select，string类型，必填）
+  - name: image_url
+    type: string
+    required: true
+    default: "None"  # 必填参数默认值为None
+    label:
+      en_US: image_url
+      zh_Hans: 图片的URL地址
+      pt_BR: image_url
+    human_description:
+      en_US: "URL address of the image"
+      zh_Hans: "图片的URL地址"
+      pt_BR: "URL do endereço da imagem"
+    llm_description: "URL address of the image"
+    form: llm
+
+  # 图片宽度（非select，string类型，必填）
+  - name: width
+    type: string
+    required: true
+    default: "None"  # 必填参数默认值为None
+    label:
+      en_US: width
+      zh_Hans: 图片宽度
+      pt_BR: largura
+    human_description:
+      en_US: "Width of the image (pixels)"
+      zh_Hans: "图片宽度（像素）"
+      pt_BR: "Largura da imagem (pixels)"
+    llm_description: "Horizontal dimension of the image"
+    form: llm
+
+  # 图片高度（非select，string类型，必填）
+  - name: height
+    type: string
+    required: true
+    default: "None"  # 必填参数默认值为None
+    label:
+      en_US: height
+      zh_Hans: 图片高度
+      pt_BR: altura
+    human_description:
+      en_US: "Height of the image (pixels)"
+      zh_Hans: "图片高度（像素）"
+      pt_BR: "Altura da imagem (pixels)"
+    llm_description: "Vertical dimension of the image"
+    form: llm
+
+  # 开始时间（非select，string类型，必填）
+  - name: start
+    type: string
+    required: true
+    default: "None"  # 必填参数默认值为None
+    label:
+      en_US: start
+      zh_Hans: 开始时间（秒）
+      pt_BR: início
+    human_description:
+      en_US: "Start time in timeline (seconds)"
+      zh_Hans: "时间线中开始时间（秒）"
+      pt_BR: "Tempo de início na linha do tempo (segundos)"
+    llm_description: "When the image starts appearing"
+    form: llm
+
+  # 结束时间（非select，string类型，必填）
+  - name: end
+    type: string
+    required: true
+    default: "None"  # 必填参数默认值为None
+    label:
+      en_US: end
+      zh_Hans: 结束时间（秒）
+      pt_BR: fim
+    human_description:
+      en_US: "End time in timeline (seconds)"
+      zh_Hans: "时间线中结束时间（秒）"
+      pt_BR: "Tempo de término na linha do tempo (segundos)"
+    llm_description: "When the image stops appearing"
+    form: llm
+
+  # 轨道名称（非select，string类型，必填）
+  - name: track_name
+    type: string
+    required: true
+    default: "None"  # 必填参数默认值为None
+    label:
+      en_US: track_name
+      zh_Hans: 轨道名称
+      pt_BR: nome da faixa
+    human_description:
+      en_US: "Name of the image track"
+      zh_Hans: "图片轨道名称"
+      pt_BR: "Nome da faixa de imagem"
+    llm_description: "Identifier for the image track"
+    form: llm
+
+  # 轨道渲染顺序（非select，string类型）
+  - name: relative_index
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: relative_index
+      zh_Hans: 轨道渲染顺序索引
+      pt_BR: índice_relativo
+    human_description:
+      en_US: "Rendering order index (lower = rendered first)"
+      zh_Hans: "轨道渲染顺序索引（数值越小越先渲染）"
+      pt_BR: "Índice de ordem de renderização (menor = renderizado primeiro)"
+    llm_description: "Layer order of the track"
+    form: llm
+
+  # 草稿ID（非select，string类型）
+  - name: draft_id
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: draft_id
+      zh_Hans: 草稿ID
+      pt_BR: ID do rascunho
+    human_description:
+      en_US: "Draft ID, create new if None"
+      zh_Hans: "草稿ID，若为None则创建新草稿"
+      pt_BR: "ID do rascunho, crie novo se None"
+    llm_description: "Draft identifier"
+    form: llm
+
+  # X轴位移（非select，string类型）
+  - name: transform_x
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: transform_x
+      zh_Hans: X轴变换
+      pt_BR: transformação X
+    human_description:
+      en_US: "X-axis transformation (pixels)"
+      zh_Hans: "X轴位移（像素）"
+      pt_BR: "Transformação no eixo X (pixels)"
+    llm_description: "Horizontal offset of the image"
+    form: llm
+
+  # Y轴位移（非select，string类型）
+  - name: transform_y
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: transform_y
+      zh_Hans: Y轴变换
+      pt_BR: transformação Y
+    human_description:
+      en_US: "Y-axis transformation (pixels)"
+      zh_Hans: "Y轴位移（像素）"
+      pt_BR: "Transformação no eixo Y (pixels)"
+    llm_description: "Vertical offset of the image"
+    form: llm
+
+  # X轴缩放（非select，string类型）
+  - name: scale_x
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: scale_x
+      zh_Hans: X轴缩放比例
+      pt_BR: escala X
+    human_description:
+      en_US: "X-axis scaling factor"
+      zh_Hans: "X轴缩放比例"
+      pt_BR: "Fator de escala no eixo X"
+    llm_description: "Horizontal scaling ratio"
+    form: llm
+
+  # Y轴缩放（非select，string类型）
+  - name: scale_y
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: scale_y
+      zh_Hans: Y轴缩放比例
+      pt_BR: escala Y
+    human_description:
+      en_US: "Y-axis scaling factor"
+      zh_Hans: "Y轴缩放比例"
+      pt_BR: "Fator de escala no eixo Y"
+    llm_description: "Vertical scaling ratio"
+    form: llm
+
+  # 转场类型（select类型，保持不变）
+  - name: transition
+    type: select
+    required: false
+    default: "None"
+    label:
+      en_US: transition
+      zh_Hans: 过渡类型
+      pt_BR: transição
+    human_description:
+      en_US: "Transition type between clips"
+      zh_Hans: "片段间的转场类型"
+      pt_BR: "Tipo de transição entre clipes"
+    llm_description: "Transition effect"
+    form: form
+    options:
+      - name: transition_1
+        label:
+          zh_Hans: 3D空间
+          en_US: 3D Space
+        description: 3D空间转场
+        value: "_3D空间"
+      - name: transition_2
+        label:
+          zh_Hans: 万花筒
+          en_US: Kaleidoscope
+        description: 万花筒转场特效
+        value: "万花筒"
+
+
+  # 转场时长（非select，string类型）
+  - name: transition_duration
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: transition_duration
+      zh_Hans: 过渡持续时间（秒）
+      pt_BR: duração da transição
+    human_description:
+      en_US: "Transition duration (seconds)"
+      zh_Hans: "过渡持续时间（秒）"
+      pt_BR: "Duração da transição (segundos)"
+    llm_description: "Length of the transition"
+    form: llm
+
+  # 入场动画（select类型，保持不变）
+  - name: animation
+    type: select
+    required: false
+    default: "None"
+    label:
+      en_US: animation
+      zh_Hans: 入场动画
+      pt_BR: animação_entrada
+    human_description:
+      en_US: "Entrance animation effect"
+      zh_Hans: "入场动画效果"
+      pt_BR: "Efeito de animação de entrada"
+    llm_description: "Animation when the image appears"
+    form: form
+    options:
+      - name: anim_1
+        label:
+          zh_Hans: 缩小
+          en_US: Shrink
+        description: 逐渐缩小至原始大小
+        value: "缩小"
+      - name: anim_2
+        label:
+          zh_Hans: 渐显
+          en_US: Fade In
+        description: 逐渐显现
+        value: "渐显"
+      - name: anim_3
+        label:
+          zh_Hans: 放大
+          en_US: Enlarge
+        description: 从缩小状态放大至原始大小
+        value: "放大"
+      - name: anim_4
+        label:
+          zh_Hans: 旋转
+          en_US: Rotate
+        description: 伴随旋转效果出现
+        value: "旋转"
+      - name: anim_5
+        label:
+          zh_Hans: Kira游动
+          en_US: Kira Swimming
+        description: 带有闪烁光效的游动入场
+        value: "Kira游动"
+      - name: anim_6
+        label:
+          zh_Hans: 抖动下降
+          en_US: Shake Down
+        description: 抖动着向下移动入场
+        value: "抖动下降"
+      - name: anim_7
+        label:
+          zh_Hans: 镜像翻转
+          en_US: Mirror Flip
+        description: 以镜像方式翻转入场
+        value: "镜像翻转"
+      - name: anim_8
+        label:
+          zh_Hans: 旋转开幕
+          en_US: Rotate Open
+        description: 如同旋转开门般入场
+        value: "旋转开幕"
+      - name: anim_9
+        label:
+          zh_Hans: 折叠开幕
+          en_US: Fold Open
+        description: 如同折叠打开般入场
+        value: "折叠开幕"
+      - name: anim_10
+        label:
+          zh_Hans: 漩涡旋转
+          en_US: Vortex Rotate
+        description: 以漩涡状旋转入场
+        value: "漩涡旋转"
+      - name: anim_11
+        label:
+          zh_Hans: 跳转开幕
+          en_US: Jump Open
+        description: 带有跳跃感的开幕入场
+        value: "跳转开幕"
+      - name: anim_12
+        label:
+          zh_Hans: 轻微抖动
+          en_US: Slight Shake
+        description: 轻微抖动着出现
+        value: "轻微抖动"
+      - name: anim_13
+        label:
+          zh_Hans: 轻微抖动 II
+          en_US: Slight Shake II
+        description: 第二种轻微抖动效果入场
+        value: "轻微抖动 II"
+      - name: anim_14
+        label:
+          zh_Hans: 轻微抖动 III
+          en_US: Slight Shake III
+        description: 第三种轻微抖动效果入场
+        value: "轻微抖动 III"
+      - name: anim_15
+        label:
+          zh_Hans: 上下抖动
+          en_US: Up-Down Shake
+        description: 上下抖动着出现
+        value: "上下抖动"
+      - name: anim_16
+        label:
+          zh_Hans: 左右抖动
+          en_US: Left-Right Shake
+        description: 左右抖动着出现
+        value: "左右抖动"
+      - name: anim_17
+        label:
+          zh_Hans: 斜切
+          en_US: Skew
+        description: 以斜切方式入场
+        value: "斜切"
+      - name: anim_18
+        label:
+          zh_Hans: 钟摆
+          en_US: Pendulum
+        description: 如同钟摆般摆动入场
+        value: "钟摆"
+      - name: anim_19
+        label:
+          zh_Hans: 雨刷
+          en_US: Wiper
+        description: 如同雨刷般摆动入场
+        value: "雨刷"
+      - name: anim_20
+        label:
+          zh_Hans: 雨刷 II
+          en_US: Wiper II
+        description: 第二种雨刷式摆动入场
+        value: "雨刷 II"
+      - name: anim_21
+        label:
+          zh_Hans: 向上转入
+          en_US: Turn Up
+        description: 向上转动着入场
+        value: "向上转入"
+      - name: anim_22
+        label:
+          zh_Hans: 向上转入 II
+          en_US: Turn Up II
+        description: 第二种向上转动入场
+        value: "向上转入 II"
+      - name: anim_23
+        label:
+          zh_Hans: 向左转入
+          en_US: Turn Left
+        description: 向左转动着入场
+        value: "向左转入"
+      - name: anim_24
+        label:
+          zh_Hans: 向右转入
+          en_US: Turn Right
+        description: 向右转动着入场
+        value: "向右转入"
+      - name: anim_25
+        label:
+          zh_Hans: 向上滑动
+          en_US: Slide Up
+        description: 向上滑动入场
+        value: "向上滑动"
+      - name: anim_26
+        label:
+          zh_Hans: 向下滑动
+          en_US: Slide Down
+        description: 向下滑动入场
+        value: "向下滑动"
+      - name: anim_27
+        label:
+          zh_Hans: 向左滑动
+          en_US: Slide Left
+        description: 向左滑动入场
+        value: "向左滑动"
+      - name: anim_28
+        label:
+          zh_Hans: 向右滑动
+          en_US: Slide Right
+        description: 向右滑动入场
+        value: "向右滑动"
+      - name: anim_29
+        label:
+          zh_Hans: 向下甩入
+          en_US: Flick Down
+        description: 向下甩动着入场
+        value: "向下甩入"
+      - name: anim_30
+        label:
+          zh_Hans: 向右甩入
+          en_US: Flick Right
+        description: 向右甩动着入场
+        value: "向右甩入"
+      - name: anim_31
+        label:
+          zh_Hans: 向左上甩入
+          en_US: Flick Up-Left
+        description: 向左上方甩动入场
+        value: "向左上甩入"
+      - name: anim_32
+        label:
+          zh_Hans: 向右上甩入
+          en_US: Flick Up-Right
+        description: 向右上方甩动入场
+        value: "向右上甩入"
+      - name: anim_33
+        label:
+          zh_Hans: 向左下甩入
+          en_US: Flick Down-Left
+        description: 向左下方甩动入场
+        value: "向左下甩入"
+      - name: anim_34
+        label:
+          zh_Hans: 向右下甩入
+          en_US: Flick Down-Right
+        description: 向右下方甩动入场
+        value: "向右下甩入"
+      - name: anim_35
+        label:
+          zh_Hans: 动感放大
+          en_US: Dynamic Enlarge
+        description: 带有动感的放大入场
+        value: "动感放大"
+      - name: anim_36
+        label:
+          zh_Hans: 动感缩小
+          en_US: Dynamic Shrink
+        description: 带有动感的缩小入场
+        value: "动感缩小"
+      - name: anim_37
+        label:
+          zh_Hans: 轻微放大
+          en_US: Slight Enlarge
+        description: 轻微放大后入场
+        value: "轻微放大"
+
+  # 入场动画时长（非select，string类型）
+  - name: animation_duration
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: animation_duration
+      zh_Hans: 入场动画时长（秒）
+      pt_BR: duração_anim_entrada
+    human_description:
+      en_US: "Duration of entrance animation (seconds)"
+      zh_Hans: "入场动画持续时间（秒）"
+      pt_BR: "Duração da animação de entrada (segundos)"
+    llm_description: "Length of the entrance animation"
+    form: llm
+
+  # 新入场动画（非select，string类型）
+  - name: intro_animation
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: intro_animation
+      zh_Hans: 新入场动画
+      pt_BR: nova_anim_entrada
+    human_description:
+      en_US: "New entrance animation (higher priority than 'animation')"
+      zh_Hans: "新入场动画（优先级高于'动画'参数）"
+      pt_BR: "Nova animação de entrada (prioridade maior que 'animation')"
+    llm_description: "Advanced entrance animation"
+    form: llm
+
+  # 新入场动画时长（非select，string类型）
+  - name: intro_animation_duration
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: intro_animation_duration
+      zh_Hans: 新入场动画时长（秒）
+      pt_BR: duração_nova_anim_entrada
+    human_description:
+      en_US: "Duration of new entrance animation (seconds)"
+      zh_Hans: "新入场动画持续时间（秒）"
+      pt_BR: "Duração da nova animação de entrada (segundos)"
+    llm_description: "Length of the new entrance animation"
+    form: llm
+
+  # 退场动画（非select，string类型）
+  - name: outro_animation
+    type: select
+    required: false
+    default: "None"
+    label:
+      en_US: outro_animation
+      zh_Hans: 退场动画
+      pt_BR: animação_saida
+    human_description:
+      en_US: "Exit animation effect"
+      zh_Hans: "退场动画效果"
+      pt_BR: "Efeito de animação de saída"
+    llm_description: "Animation when the image disappears"
+    form: form
+    options:
+      - name: exit_anim_1
+        label:
+          zh_Hans: 向上转出
+          en_US: Turn Up Out
+        description: 向上转动着消失
+        value: "向上转出"
+      - name: exit_anim_2
+        label:
+          zh_Hans: 向上转出 II
+          en_US: Turn Up Out II
+        description: 第二种向上转动消失效果
+        value: "向上转出 II"
+      - name: exit_anim_3
+        label:
+          zh_Hans: 跳转闭幕
+          en_US: Jump Close
+        description: 带有跳跃感的闭幕消失
+        value: "跳转闭幕"
+      - name: exit_anim_4
+        label:
+          zh_Hans: 镜像翻转
+          en_US: Mirror Flip
+        description: 以镜像方式翻转消失
+        value: "镜像翻转"
+      - name: exit_anim_5
+        label:
+          zh_Hans: 旋转闭幕
+          en_US: Rotate Close
+        description: 如同旋转关门般消失
+        value: "旋转闭幕"
+      - name: exit_anim_6
+        label:
+          zh_Hans: 漩涡旋转
+          en_US: Vortex Rotate
+        description: 以漩涡状旋转消失
+        value: "漩涡旋转"
+      - name: exit_anim_7
+        label:
+          zh_Hans: 向上滑动
+          en_US: Slide Up
+        description: 向上滑动消失
+        value: "向上滑动"
+      - name: exit_anim_8
+        label:
+          zh_Hans: 向下滑动
+          en_US: Slide Down
+        description: 向下滑动消失
+        value: "向下滑动"
+      - name: exit_anim_9
+        label:
+          zh_Hans: 向左滑动
+          en_US: Slide Left
+        description: 向左滑动消失
+        value: "向左滑动"
+      - name: exit_anim_10
+        label:
+          zh_Hans: 向右滑动
+          en_US: Slide Right
+        description: 向右滑动消失
+        value: "向右滑动"
+      - name: exit_anim_11
+        label:
+          zh_Hans: 折叠闭幕
+          en_US: Fold Close
+        description: 如同折叠关闭般消失
+        value: "折叠闭幕"
+      - name: exit_anim_12
+        label:
+          zh_Hans: 轻微放大
+          en_US: Slight Enlarge
+        description: 轻微放大后消失
+        value: "轻微放大"
+      - name: exit_anim_13
+        label:
+          zh_Hans: Kira游动
+          en_US: Kira Swimming
+        description: 带有闪烁光效的游动消失
+        value: "Kira游动"
+      - name: exit_anim_14
+        label:
+          zh_Hans: 缩小
+          en_US: Shrink
+        description: 逐渐缩小至消失
+        value: "缩小"
+      - name: exit_anim_15
+        label:
+          zh_Hans: 放大
+          en_US: Enlarge
+        description: 逐渐放大至消失
+        value: "放大"
+      - name: exit_anim_16
+        label:
+          zh_Hans: 旋转
+          en_US: Rotate
+        description: 伴随旋转效果消失
+        value: "旋转"
+      - name: exit_anim_17
+        label:
+          zh_Hans: 斜切
+          en_US: Skew
+        description: 以斜切方式消失
+        value: "斜切"
+
+  # 退场动画时长（非select，string类型）
+  - name: outro_animation_duration
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: outro_animation_duration
+      zh_Hans: 退场动画时长（秒）
+      pt_BR: duração_anim_saida
+    human_description:
+      en_US: "Duration of exit animation (seconds)"
+      zh_Hans: "退场动画持续时间（秒）"
+      pt_BR: "Duração da animação de saída (segundos)"
+    llm_description: "Length of the exit animation"
+    form: form
+    options:
+      - name: exit_anim_split_3
+        label:
+          zh_Hans: 三分割
+          en_US: Three Split
+        description: 画面分割为三部分退出
+        value: "三分割"
+      - name: exit_anim_split_3_ii
+        label:
+          zh_Hans: 三分割 II
+          en_US: Three Split II
+        description: 第二种三分割退出效果
+        value: "三分割 II"
+      - name: exit_anim_split_vertical
+        label:
+          zh_Hans: 上下分割
+          en_US: Vertical Split
+        description: 画面上下分割退出
+        value: "上下分割"
+      - name: exit_anim_split_vertical_ii
+        label:
+          zh_Hans: 上下分割 II
+          en_US: Vertical Split II
+        description: 第二种上下分割退出效果
+        value: "上下分割 II"
+      - name: exit_anim_rotate_up
+        label:
+          zh_Hans: 上升旋转
+          en_US: Rise and Rotate
+        description: 上升同时旋转退出
+        value: "上升旋转"
+      - name: exit_anim_down_right
+        label:
+          zh_Hans: 下降向右
+          en_US: Down and Right
+        description: 向下向右移动退出
+        value: "下降向右"
+      - name: exit_anim_down_left
+        label:
+          zh_Hans: 下降向左
+          en_US: Down and Left
+        description: 向下向左移动退出
+        value: "下降向左"
+      - name: exit_anim_center_split
+        label:
+          zh_Hans: 中间分割
+          en_US: Center Split
+        description: 从中间向两侧分割退出
+        value: "中间分割"
+      - name: exit_anim_center_split_ii
+        label:
+          zh_Hans: 中间分割 II
+          en_US: Center Split II
+        description: 第二种中间分割退出效果
+        value: "中间分割 II"
+      - name: exit_anim_stack
+        label:
+          zh_Hans: 叠叠乐
+          en_US: Stack
+        description: 如叠积木般堆叠退出
+        value: "叠叠乐"
+      - name: exit_anim_stack_ii
+        label:
+          zh_Hans: 叠叠乐 II
+          en_US: Stack II
+        description: 第二种叠叠乐退出效果
+        value: "叠叠乐 II"
+      - name: exit_anim_stack_iii
+        label:
+          zh_Hans: 叠叠乐 III
+          en_US: Stack III
+        description: 第三种叠叠乐退出效果
+        value: "叠叠乐 III"
+      - name: exit_anim_stack_iv
+        label:
+          zh_Hans: 叠叠乐 IV
+          en_US: Stack IV
+        description: 第四种叠叠乐退出效果
+        value: "叠叠乐 IV"
+      - name: exit_anim_stack_v
+        label:
+          zh_Hans: 叠叠乐 V
+          en_US: Stack V
+        description: 第五种叠叠乐退出效果
+        value: "叠叠乐 V"
+      - name: exit_anim_stack_vi
+        label:
+          zh_Hans: 叠叠乐 Ⅵ
+          en_US: Stack VI
+        description: 第六种叠叠乐退出效果
+        value: "叠叠乐 Ⅵ"
+      - name: exit_anim_pull_right
+        label:
+          zh_Hans: 右拉镜
+          en_US: Pull Right
+        description: 如向右拉镜头般退出
+        value: "右拉镜"
+      - name: exit_anim_down_right_move
+        label:
+          zh_Hans: 向右下降
+          en_US: Down Right Move
+        description: 向右下方移动退出
+        value: "向右下降"
+      - name: exit_anim_shrink_right
+        label:
+          zh_Hans: 向右缩小
+          en_US: Shrink Right
+        description: 向右移动并缩小退出
+        value: "向右缩小"
+      - name: exit_anim_down_left_move
+        label:
+          zh_Hans: 向左下降
+          en_US: Down Left Move
+        description: 向左下方移动退出
+        value: "向左下降"
+      - name: exit_anim_shrink_left
+        label:
+          zh_Hans: 向左缩小
+          en_US: Shrink Left
+        description: 向左移动并缩小退出
+        value: "向左缩小"
+      - name: exit_anim_distort
+        label:
+          zh_Hans: 哈哈镜
+          en_US: Distort
+        description: 如哈哈镜般扭曲退出
+        value: "哈哈镜"
+      - name: exit_anim_distort_ii
+        label:
+          zh_Hans: 哈哈镜 II
+          en_US: Distort II
+        description: 第二种哈哈镜扭曲退出效果
+        value: "哈哈镜 II"
+      - name: exit_anim_four_slide
+        label:
+          zh_Hans: 四格滑动
+          en_US: Four Grid Slide
+        description: 分为四格滑动退出
+        value: "四格滑动"
+      - name: exit_anim_four_flip
+        label:
+          zh_Hans: 四格翻转
+          en_US: Four Grid Flip
+        description: 分为四格翻转退出
+        value: "四格翻转"
+      - name: exit_anim_four_rotate
+        label:
+          zh_Hans: 四格转动
+          en_US: Four Grid Rotate
+        description: 分为四格转动退出
+        value: "四格转动"
+      - name: exit_anim_four_rotate_ii
+        label:
+          zh_Hans: 四格转动 II
+          en_US: Four Grid Rotate II
+        description: 第二种四格转动退出效果
+        value: "四格转动 II"
+      - name: exit_anim_bounce
+        label:
+          zh_Hans: 回弹伸缩
+          en_US: Bounce
+        description: 带有回弹效果的伸缩退出
+        value: "回弹伸缩"
+      - name: exit_anim_sandwich
+        label:
+          zh_Hans: 夹心饼干
+          en_US: Sandwich
+        description: 如夹心饼干般向中间合拢退出
+        value: "夹心饼干"
+      - name: exit_anim_sandwich_ii
+        label:
+          zh_Hans: 夹心饼干 II
+          en_US: Sandwich II
+        description: 第二种夹心饼干退出效果
+        value: "夹心饼干 II"
+      - name: exit_anim_train
+        label:
+          zh_Hans: 小火车
+          en_US: Train
+        description: 如小火车般依次退出
+        value: "小火车"
+      - name: exit_anim_train_ii
+        label:
+          zh_Hans: 小火车 II
+          en_US: Train II
+        description: 第二种小火车退出效果
+        value: "小火车 II"
+      - name: exit_anim_train_iii
+        label:
+          zh_Hans: 小火车 III
+          en_US: Train III
+        description: 第三种小火车退出效果
+        value: "小火车 III"
+      - name: exit_anim_train_iv
+        label:
+          zh_Hans: 小火车 IV
+          en_US: Train IV
+        description: 第四种小火车退出效果
+        value: "小火车 IV"
+      - name: exit_anim_spin_top
+        label:
+          zh_Hans: 小陀螺
+          en_US: Spin Top
+        description: 如小陀螺般旋转退出
+        value: "小陀螺"
+      - name: exit_anim_spin_top_ii
+        label:
+          zh_Hans: 小陀螺 II
+          en_US: Spin Top II
+        description: 第二种小陀螺旋转退出效果
+        value: "小陀螺 II"
+      - name: exit_anim_horizontal_split
+        label:
+          zh_Hans: 左右分割
+          en_US: Horizontal Split
+        description: 画面左右分割退出
+        value: "左右分割"
+      - name: exit_anim_horizontal_split_ii
+        label:
+          zh_Hans: 左右分割 II
+          en_US: Horizontal Split II
+        description: 第二种左右分割退出效果
+        value: "左右分割 II"
+      - name: exit_anim_pull_left
+        label:
+          zh_Hans: 左拉镜
+          en_US: Pull Left
+        description: 如向左拉镜头般退出
+        value: "左拉镜"
+      - name: exit_anim_bounce_rotate
+        label:
+          zh_Hans: 弹入旋转
+          en_US: Bounce and Rotate
+        description: 弹入并旋转退出
+        value: "弹入旋转"
+      - name: exit_anim_distort_shrink_right
+        label:
+          zh_Hans: 形变右缩
+          en_US: Distort Shrink Right
+        description: 变形并向右缩小退出
+        value: "形变右缩"
+      - name: exit_anim_distort_shrink_left
+        label:
+          zh_Hans: 形变左缩
+          en_US: Distort Shrink Left
+        description: 变形并向左缩小退出
+        value: "形变左缩"
+      - name: exit_anim_distort_shrink
+        label:
+          zh_Hans: 形变缩小
+          en_US: Distort Shrink
+        description: 变形并缩小退出
+        value: "形变缩小"
+      - name: exit_anim_yo_yo
+        label:
+          zh_Hans: 悠悠球
+          en_US: Yo-Yo
+        description: 如悠悠球般上下移动退出
+        value: "悠悠球"
+      - name: exit_anim_yo_yo_ii
+        label:
+          zh_Hans: 悠悠球 II
+          en_US: Yo-Yo II
+        description: 第二种悠悠球退出效果
+        value: "悠悠球 II"
+      - name: exit_anim_phone
+        label:
+          zh_Hans: 手机
+          en_US: Phone
+        description: 如手机屏幕关闭般退出
+        value: "手机"
+      - name: exit_anim_phone_ii
+        label:
+          zh_Hans: 手机 II
+          en_US: Phone II
+        description: 第二种手机退出效果
+        value: "手机 II"
+      - name: exit_anim_phone_iii
+        label:
+          zh_Hans: 手机 III
+          en_US: Phone III
+        description: 第三种手机退出效果
+        value: "手机 III"
+      - name: exit_anim_twist_stretch
+        label:
+          zh_Hans: 扭曲拉伸
+          en_US: Twist and Stretch
+        description: 扭曲并拉伸退出
+        value: "扭曲拉伸"
+      - name: exit_anim_shake_zoom
+        label:
+          zh_Hans: 抖入放大
+          en_US: Shake and Zoom
+        description: 抖动并放大退出
+        value: "抖入放大"
+      - name: exit_anim_stretch_twist
+        label:
+          zh_Hans: 拉伸扭曲
+          en_US: Stretch and Twist
+        description: 拉伸并扭曲退出
+        value: "拉伸扭曲"
+      - name: exit_anim_zoom_bounce
+        label:
+          zh_Hans: 放大弹动
+          en_US: Zoom and Bounce
+        description: 放大并弹动退出
+        value: "放大弹动"
+      - name: exit_anim_diagonal_rotate
+        label:
+          zh_Hans: 斜转
+          en_US: Diagonal Rotate
+        description: 沿对角线旋转退出
+        value: "斜转"
+      - name: exit_anim_diagonal_rotate_ii
+        label:
+          zh_Hans: 斜转 II
+          en_US: Diagonal Rotate II
+        description: 第二种斜转退出效果
+        value: "斜转 II"
+      - name: exit_anim_square_rotate
+        label:
+          zh_Hans: 方片转动
+          en_US: Square Rotate
+        description: 方片形状转动退出
+        value: "方片转动"
+      - name: exit_anim_square_rotate_ii
+        label:
+          zh_Hans: 方片转动 II
+          en_US: Square Rotate II
+        description: 第二种方片转动退出效果
+        value: "方片转动 II"
+      - name: exit_anim_spin_shake
+        label:
+          zh_Hans: 旋入晃动
+          en_US: Spin and Shake
+        description: 旋转并晃动退出
+        value: "旋入晃动"
+      - name: exit_anim_spin_fade
+        label:
+          zh_Hans: 旋出渐隐
+          en_US: Spin and Fade
+        description: 旋转并渐隐退出
+        value: "旋出渐隐"
+      - name: exit_anim_rotate_rise
+        label:
+          zh_Hans: 旋转上升
+          en_US: Rotate and Rise
+        description: 旋转并上升退出
+        value: "旋转上升"
+      - name: exit_anim_rotate_stretch
+        label:
+          zh_Hans: 旋转伸缩
+          en_US: Rotate and Stretch
+        description: 旋转并伸缩退出
+        value: "旋转伸缩"
+      - name: exit_anim_rotate_suck
+        label:
+          zh_Hans: 旋转回吸
+          en_US: Rotate and Suck
+        description: 旋转并向内回吸退出
+        value: "旋转回吸"
+      - name: exit_anim_rotate_shrink
+        label:
+          zh_Hans: 旋转缩小
+          en_US: Rotate and Shrink
+        description: 旋转并缩小退出
+        value: "旋转缩小"
+      - name: exit_anim_rotate_fall
+        label:
+          zh_Hans: 旋转降落
+          en_US: Rotate and Fall
+        description: 旋转并降落退出
+        value: "旋转降落"
+      - name: exit_anim_shake_spin
+        label:
+          zh_Hans: 晃动旋出
+          en_US: Shake and Spin
+        description: 晃动并旋转退出
+        value: "晃动旋出"
+      - name: exit_anim_crystal
+        label:
+          zh_Hans: 水晶
+          en_US: Crystal
+        description: 如水晶般碎裂退出
+        value: "水晶"
+      - name: exit_anim_crystal_ii
+        label:
+          zh_Hans: 水晶 II
+          en_US: Crystal II
+        description: 第二种水晶退出效果
+        value: "水晶 II"
+      - name: exit_anim_wave_slide
+        label:
+          zh_Hans: 波动滑出
+          en_US: Wave Slide
+        description: 如波浪般滑动退出
+        value: "波动滑出"
+      - name: exit_anim_pirate_ship
+        label:
+          zh_Hans: 海盗船
+          en_US: Pirate Ship
+        description: 如海盗船摇晃般退出
+        value: "海盗船"
+      - name: exit_anim_pirate_ship_ii
+        label:
+          zh_Hans: 海盗船 II
+          en_US: Pirate Ship II
+        description: 第二种海盗船退出效果
+        value: "海盗船 II"
+      - name: exit_anim_pirate_ship_iii
+        label:
+          zh_Hans: 海盗船 III
+          en_US: Pirate Ship III
+        description: 第三种海盗船退出效果
+        value: "海盗船 III"
+      - name: exit_anim_pirate_ship_iv
+        label:
+          zh_Hans: 海盗船 IV
+          en_US: Pirate Ship IV
+        description: 第四种海盗船退出效果
+        value: "海盗船 IV"
+      - name: exit_anim_slide_wave
+        label:
+          zh_Hans: 滑入波动
+          en_US: Slide and Wave
+        description: 滑入并产生波动退出
+        value: "滑入波动"
+      - name: exit_anim_slide
+        label:
+          zh_Hans: 滑滑梯
+          en_US: Slide
+        description: 如滑滑梯般滑出退出
+        value: "滑滑梯"
+      - name: exit_anim_slide_ii
+        label:
+          zh_Hans: 滑滑梯 II
+          en_US: Slide II
+        description: 第二种滑滑梯退出效果
+        value: "滑滑梯 II"
+      - name: exit_anim_venetian_blind
+        label:
+          zh_Hans: 百叶窗
+          en_US: Venetian Blind
+        description: 如百叶窗般关闭退出
+        value: "百叶窗"
+      - name: exit_anim_venetian_blind_ii
+        label:
+          zh_Hans: 百叶窗 II
+          en_US: Venetian Blind II
+        description: 第二种百叶窗退出效果
+        value: "百叶窗 II"
+      - name: exit_anim_piece_slide
+        label:
+          zh_Hans: 碎块滑动
+          en_US: Piece Slide
+        description: 分裂为碎块滑动退出
+        value: "碎块滑动"
+      - name: exit_anim_piece_slide_ii
+        label:
+          zh_Hans: 碎块滑动 II
+          en_US: Piece Slide II
+        description: 第二种碎块滑动退出效果
+        value: "碎块滑动 II"
+      - name: exit_anim_cube
+        label:
+          zh_Hans: 立方体
+          en_US: Cube
+        description: 如立方体旋转退出
+        value: "立方体"
+      - name: exit_anim_cube_ii
+        label:
+          zh_Hans: 立方体 II
+          en_US: Cube II
+        description: 第二种立方体退出效果
+        value: "立方体 II"
+      - name: exit_anim_cube_iii
+        label:
+          zh_Hans: 立方体 III
+          en_US: Cube III
+        description: 第三种立方体退出效果
+        value: "立方体 III"
+      - name: exit_anim_cube_iv
+        label:
+          zh_Hans: 立方体 IV
+          en_US: Cube IV
+        description: 第四种立方体退出效果
+        value: "立方体 IV"
+      - name: exit_anim_cube_v
+        label:
+          zh_Hans: 立方体 V
+          en_US: Cube V
+        description: 第五种立方体退出效果
+        value: "立方体 V"
+      - name: exit_anim_circle_around
+        label:
+          zh_Hans: 绕圈圈
+          en_US: Circle Around
+        description: 绕圈移动退出
+        value: "绕圈圈"
+      - name: exit_anim_circle_around_ii
+        label:
+          zh_Hans: 绕圈圈 II
+          en_US: Circle Around II
+        description: 第二种绕圈移动退出效果
+        value: "绕圈圈 II"
+      - name: exit_anim_circle_around_iii
+        label:
+          zh_Hans: 绕圈圈 III
+          en_US: Circle Around III
+        description: 第三种绕圈移动退出效果
+        value: "绕圈圈 III"
+      - name: exit_anim_circle_around_iv
+        label:
+          zh_Hans: 绕圈圈 IV
+          en_US: Circle Around IV
+        description: 第四种绕圈移动退出效果
+        value: "绕圈圈 IV"
+      - name: exit_anim_shrink_bounce
+        label:
+          zh_Hans: 缩小弹动
+          en_US: Shrink and Bounce
+        description: 缩小并弹动退出
+        value: "缩小弹动"
+      - name: exit_anim_shrink_rotate
+        label:
+          zh_Hans: 缩小旋转
+          en_US: Shrink and Rotate
+        description: 缩小并旋转退出
+        value: "缩小旋转"
+      - name: exit_anim_shrink_turn
+        label:
+          zh_Hans: 缩小转出
+          en_US: Shrink and Turn
+        description: 缩小并转出退出
+        value: "缩小转出"
+      - name: exit_anim_zoom
+        label:
+          zh_Hans: 缩放
+          en_US: Zoom
+        description: 缩放退出
+        value: "缩放"
+      - name: exit_anim_zoom_ii
+        label:
+          zh_Hans: 缩放 II
+          en_US: Zoom II
+        description: 第二种缩放退出效果
+        value: "缩放 II"
+      - name: exit_anim_flip
+        label:
+          zh_Hans: 翻转
+          en_US: Flip
+        description: 翻转退出
+        value: "翻转"
+      - name: exit_anim_flip_ii
+        label:
+          zh_Hans: 翻转 II
+          en_US: Flip II
+        description: 第二种翻转退出效果
+        value: "翻转 II"
+      - name: exit_anim_flip_iii
+        label:
+          zh_Hans: 翻转 III
+          en_US: Flip III
+        description: 第三种翻转退出效果
+        value: "翻转 III"
+      - name: exit_anim_flip_iv
+        label:
+          zh_Hans: 翻转 IV
+          en_US: Flip IV
+        description: 第四种翻转退出效果
+        value: "翻转 IV"
+      - name: exit_anim_flip_v
+        label:
+          zh_Hans: 翻转 V
+          en_US: Flip V
+        description: 第五种翻转退出效果
+        value: "翻转 V"
+      - name: exit_anim_flip_vi
+        label:
+          zh_Hans: 翻转 VI
+          en_US: Flip VI
+        description: 第六种翻转退出效果
+        value: "翻转 VI"
+      - name: exit_anim_swing
+        label:
+          zh_Hans: 荡秋千
+          en_US: Swing
+        description: 如荡秋千般摇摆退出
+        value: "荡秋千"
+      - name: exit_anim_swing_ii
+        label:
+          zh_Hans: 荡秋千 II
+          en_US: Swing II
+        description: 第二种荡秋千退出效果
+        value: "荡秋千 II"
+      - name: exit_anim_turn_in_out
+        label:
+          zh_Hans: 转入转出
+          en_US: Turn In and Out
+        description: 旋转进入再转出退出
+        value: "转入转出"
+      - name: exit_anim_turn_in_out_ii
+        label:
+          zh_Hans: 转入转出 II
+          en_US: Turn In and Out II
+        description: 第二种转入转出退出效果
+        value: "转入转出 II"
+      - name: exit_anim_spin_circle
+        label:
+          zh_Hans: 转圈圈
+          en_US: Spin Circle
+        description: 快速旋转退出
+        value: "转圈圈"
+      - name: exit_anim_roller_coaster
+        label:
+          zh_Hans: 过山车
+          en_US: Roller Coaster
+        description: 如过山车般轨迹退出
+        value: "过山车"
+      - name: exit_anim_roller_coaster_ii
+        label:
+          zh_Hans: 过山车 II
+          en_US: Roller Coaster II
+        description: 第二种过山车退出效果
+        value: "过山车 II"
+      - name: exit_anim_fall_rotate
+        label:
+          zh_Hans: 降落旋转
+          en_US: Fall and Rotate
+        description: 降落并旋转退出
+        value: "降落旋转"
+      - name: exit_anim_rubik_cube
+        label:
+          zh_Hans: 魔方
+          en_US: Rubik Cube
+        description: 如魔方转动般退出
+        value: "魔方"
+      - name: exit_anim_rubik_cube_ii
+        label:
+          zh_Hans: 魔方 II
+          en_US: Rubik Cube II
+        description: 第二种魔方退出效果
+        value: "魔方 II"
+
+
+  # 组合动画（非select，string类型）
+  - name: combo_animation
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: combo_animation
+      zh_Hans: 组合动画
+      pt_BR: animação_combinação
+    human_description:
+      en_US: "Combo animation effect (looping while visible)"
+      zh_Hans: "组合动画效果（显示期间循环）"
+      pt_BR: "Efeito de animação combinada (repetindo enquanto visível)"
+    llm_description: "Continuous animation while visible"
+    form: llm
+
+  # 组合动画时长（非select，string类型）
+  - name: combo_animation_duration
+    type: string
+    required: false
+    default: "0.5"
+    label:
+      en_US: combo_animation_duration
+      zh_Hans: 组合动画时长（秒）
+      pt_BR: duração_anim_combinação
+    human_description:
+      en_US: "Duration of combo animation cycle (seconds)"
+      zh_Hans: "组合动画单次周期时长（秒）"
+      pt_BR: "Duração do ciclo de animação combinada (segundos)"
+    llm_description: "Length of one combo animation cycle"
+    form: llm
+
+  # 遮罩类型（select类型，保持不变）
+  - name: mask_type
+    type: select
+    required: false
+    default: "None"
+    label:
+      en_US: mask_type
+      zh_Hans: 遮罩类型
+      pt_BR: tipo de máscara
+    human_description:
+      en_US: "Mask type (e.g., Linear, Circle)"
+      zh_Hans: "遮罩类型（如线性、圆形）"
+      pt_BR: "Tipo de máscara (ex: Linear, Circle)"
+    llm_description: "Shape of the mask"
+    form: form
+    options:
+      - name: mask_type_1
+        label:
+          zh_Hans: 线性
+          en_US: Linear
+        description: 线性掩码
+        value: "线性"
+      - name: mask_type_2
+        label:
+          zh_Hans: 圆形
+          en_US: Circle
+        description: 圆形掩码
+        value: "圆形"
+
+  # 遮罩中心X坐标（非select，string类型）
+  - name: mask_center_x
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: mask_center_x
+      zh_Hans: 遮罩中心X坐标
+      pt_BR: centro X da máscara
+    human_description:
+      en_US: "Mask center X coordinate (pixels)"
+      zh_Hans: "遮罩中心X坐标（像素）"
+      pt_BR: "Coordenada X do centro da máscara (pixels)"
+    llm_description: "X coordinate of mask center"
+    form: llm
+
+  # 遮罩中心Y坐标（非select，string类型）
+  - name: mask_center_y
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: mask_center_y
+      zh_Hans: 遮罩中心Y坐标
+      pt_BR: centro Y da máscara
+    human_description:
+      en_US: "Mask center Y coordinate (pixels)"
+      zh_Hans: "遮罩中心Y坐标（像素）"
+      pt_BR: "Coordenada Y do centro da máscara (pixels)"
+    llm_description: "Y coordinate of mask center"
+    form: llm
+
+  # 遮罩尺寸（非select，string类型）
+  - name: mask_size
+    type: string
+    required: false
+    default: "0.5"
+    label:
+      en_US: mask_size
+      zh_Hans: 遮罩尺寸（素材高度比例）
+      pt_BR: tamanho da máscara
+    human_description:
+      en_US: "Mask size (proportion of material height)"
+      zh_Hans: "遮罩尺寸（素材高度比例）"
+      pt_BR: "Tamanho da máscara (proporção da altura do material)"
+    llm_description: "Mask size relative to image height"
+    form: llm
+
+  # 遮罩旋转角度（非select，string类型）
+  - name: mask_rotation
+    type: string
+    required: false
+    default: "0"
+    label:
+      en_US: mask_rotation
+      zh_Hans: 遮罩旋转角度（顺时针）
+      pt_BR: rotação da máscara
+    human_description:
+      en_US: "Mask rotation angle (clockwise degrees)"
+      zh_Hans: "遮罩旋转角度（顺时针度）"
+      pt_BR: "Ângulo de rotação da máscara (graus horários)"
+    llm_description: "Clockwise rotation of the mask"
+    form: llm
+
+  # 遮罩羽化参数（非select，string类型）
+  - name: mask_feather
+    type: string
+    required: false
+    default: "0"
+    label:
+      en_US: mask_feather
+      zh_Hans: 遮罩羽化参数（0~100）
+      pt_BR: suavização da máscara
+    human_description:
+      en_US: "Mask feather parameter (0~100)"
+      zh_Hans: "遮罩羽化参数（0~100）"
+      pt_BR: "Parâmetro de suavização da máscara (0~100)"
+    llm_description: "Softness of mask edges (0-100)"
+    form: llm
+
+  # 是否反转遮罩（select类型，保持不变）
+  - name: mask_invert
+    type: select
+    required: false
+    default: "False"
+    label:
+      en_US: mask_invert
+      zh_Hans: 是否反转遮罩
+      pt_BR: inverter máscara
+    human_description:
+      en_US: "Whether to invert the mask"
+      zh_Hans: "是否反转遮罩"
+      pt_BR: "Se deve inverter a máscara"
+    llm_description: "Toggle mask inversion"
+    form: form
+    options:
+      - name: mask_invert_1
+        label:
+          zh_Hans: 是
+          en_US: mask_invert_1_true
+        description: 反转遮罩
+        value: "true"
+      - name: mask_invert_2
+        label:
+          zh_Hans: 否
+          en_US: mask_invert_1_false
+        description: 不反转遮罩
+        value: "false"
+
+  # 矩形遮罩宽度（非select，string类型）
+  - name: mask_rect_width
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: mask_rect_width
+      zh_Hans: 矩形遮罩宽度（素材宽度比例）
+      pt_BR: largura da máscara retangular
+    human_description:
+      en_US: "Rectangle mask width (proportion of material width)"
+      zh_Hans: "矩形遮罩宽度（素材宽度比例）"
+      pt_BR: "Largura da máscara retangular (proporção da largura do material)"
+    llm_description: "Width of rectangular masks"
+    form: llm
+
+  # 矩形遮罩圆角（非select，string类型）
+  - name: mask_round_corner
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: mask_round_corner
+      zh_Hans: 矩形遮罩圆角参数（0~100）
+      pt_BR: canto arredondado da máscara
+    human_description:
+      en_US: "Rectangle mask rounded corner (0~100)"
+      zh_Hans: "矩形遮罩圆角参数（0~100）"
+      pt_BR: "Canto arredondado da máscara retangular (0~100)"
+    llm_description: "Rounded corner radius for rectangles"
+    form: llm
+extra:
+  python:
+    source: tools/capcut_add_image.py

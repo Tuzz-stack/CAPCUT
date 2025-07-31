@@ -1,0 +1,484 @@
+identity:
+  name: "capcut_add_video"
+  author: "zxf"
+  label:
+    en_US: "capcut_add_video"
+    zh_Hans: "capcut_add_video"
+    pt_BR: "capcut_add_video"
+description:
+  human:
+    en_US: "capcut_add_video"
+    zh_Hans: "capcut_add_video"
+    pt_BR: "capcut_add_video"
+  llm: "capcut_add_video"
+parameters:
+  - name: draft_folder
+    type: string
+    required: false
+    label:
+      en_US: Draft Folder
+      zh_Hans: 草稿文件夹路径
+      pt_BR: Pasta do Rascunho
+    human_description:
+      en_US: "Path to the draft folder"
+      zh_Hans: "草稿文件夹的路径"
+      pt_BR: "Caminho para a pasta do rascunho"
+    llm_description: "Optional folder path for the draft"
+    form: llm
+    default: "None"
+
+  - name: video_url
+    type: string
+    required: true
+    label:
+      en_US: Video URL
+      zh_Hans: 视频URL
+      pt_BR: URL do Vídeo
+    human_description:
+      en_US: "URL of the video file"
+      zh_Hans: "视频文件的URL"
+      pt_BR: "URL do arquivo de vídeo"
+    llm_description: "Required URL for the video resource"
+    form: llm
+    default: "None"
+
+  - name: width
+    type: string
+    required: false
+    label:
+      en_US: Width
+      zh_Hans: 视频宽度
+      pt_BR: Largura
+    human_description:
+      en_US: "Width of the video (pixels)"
+      zh_Hans: "视频宽度（像素）"
+      pt_BR: "Largura do vídeo (pixels)"
+    llm_description: "Horizontal dimension of the video"
+    form: llm
+    default: "None"
+
+  - name: height
+    type: string
+    required: false
+    label:
+      en_US: Height
+      zh_Hans: 视频高度
+      pt_BR: Altura
+    human_description:
+      en_US: "Height of the video (pixels)"
+      zh_Hans: "视频高度（像素）"
+      pt_BR: "Altura do vídeo (pixels)"
+    llm_description: "Vertical dimension of the video"
+    form: llm
+    default: "None"
+
+  - name: start
+    type: string
+    required: false
+    label:
+      en_US: Start Time
+      zh_Hans: 源视频起始时间
+      pt_BR: Tempo Inicial
+    human_description:
+      en_US: "Start time of the source video (seconds)"
+      zh_Hans: "源视频的起始时间（秒）"
+      pt_BR: "Tempo inicial do vídeo de origem (segundos)"
+    llm_description: "Starting point within the source video"
+    form: llm
+    default: "None"
+
+  - name: end
+    type: string
+    required: false
+    label:
+      en_US: End Time
+      zh_Hans: 源视频结束时间
+      pt_BR: Tempo Final
+    human_description:
+      en_US: "End time of the source video (seconds, use null for full duration)"
+      zh_Hans: "源视频的结束时间（秒，null表示使用完整时长）"
+      pt_BR: "Tempo final do vídeo de origem (segundos, use nulo para duração completa)"
+    llm_description: "Ending point within the source video"
+    form: llm
+    default: "None"
+
+  - name: target_start
+    type: string
+    required: false
+    label:
+      en_US: Target Start Time
+      zh_Hans: 目标视频起始时间
+      pt_BR: Tempo Inicial no Alvo
+    human_description:
+      en_US: "Start time in the target video timeline (seconds)"
+      zh_Hans: "目标视频时间线中的起始时间（秒）"
+      pt_BR: "Tempo inicial na sequência do vídeo alvo (segundos)"
+    llm_description: "Position in the output timeline"
+    form: llm
+    default: "None"
+
+  - name: draft_id
+    type: string
+    required: false
+    label:
+      en_US: Draft ID
+      zh_Hans: 草稿ID
+      pt_BR: ID do Rascunho
+    human_description:
+      en_US: "ID of the draft. Create new if null or not found."
+      zh_Hans: "草稿的ID。若为空或不存在则创建新草稿"
+      pt_BR: "ID do rascunho. Crie um novo se nulo ou não encontrado."
+    llm_description: "Identifier for the draft project"
+    form: llm
+    default: "None"
+
+  - name: transform_y
+    type: string
+    required: false
+    label:
+      en_US: Y-axis Transform
+      zh_Hans: Y轴位移
+      pt_BR: Transformação no Eixo Y
+    human_description:
+      en_US: "Vertical translation of the video"
+      zh_Hans: "视频的垂直位移"
+      pt_BR: "Translação vertical do vídeo"
+    llm_description: "Vertical offset for the video"
+    form: llm
+    default: "None"
+
+  - name: scale_x
+    type: string
+    required: false
+    label:
+      en_US: X-axis Scale
+      zh_Hans: X轴缩放
+      pt_BR: Escala no Eixo X
+    human_description:
+      en_US: "Horizontal scaling factor for the video"
+      zh_Hans: "视频的水平缩放因子"
+      pt_BR: "Fator de escala horizontal do vídeo"
+    llm_description: "Horizontal scaling ratio"
+    form: llm
+    default: "None"
+
+  - name: scale_y
+    type: string
+    required: false
+    label:
+      en_US: Y-axis Scale
+      zh_Hans: Y轴缩放
+      pt_BR: Escala no Eixo Y
+    human_description:
+      en_US: "Vertical scaling factor for the video"
+      zh_Hans: "视频的垂直缩放因子"
+      pt_BR: "Fator de escala vertical do vídeo"
+    llm_description: "Vertical scaling ratio"
+    form: llm
+    default: "None"
+
+  - name: transform_x
+    type: string
+    required: false
+    label:
+      en_US: X-axis Transform
+      zh_Hans: X轴位移
+      pt_BR: Transformação no Eixo X
+    human_description:
+      en_US: "Horizontal translation of the video"
+      zh_Hans: "视频的水平位移"
+      pt_BR: "Translação horizontal do vídeo"
+    llm_description: "Horizontal offset for the video"
+    form: llm
+    default: "None"
+
+  - name: speed
+    type: string
+    required: false
+    label:
+      en_US: Playback Speed
+      zh_Hans: 播放速度
+      pt_BR: Velocidade de Reprodução
+    human_description:
+      en_US: "Playback speed multiplier"
+      zh_Hans: "播放速度倍率"
+      pt_BR: "Multiplicador de velocidade de reprodução"
+    llm_description: "Speed adjustment for the video"
+    form: llm
+    default: "None"
+
+  - name: track_name
+    type: string
+    required: false
+    label:
+      en_US: Track Name
+      zh_Hans: 轨道名称
+      pt_BR: Nome da Faixa
+    human_description:
+      en_US: "Name of the video track (optional for single-video drafts)"
+      zh_Hans: "视频轨道名称（单视频草稿中可选）"
+      pt_BR: "Nome da faixa de vídeo (opcional para rascunhos de vídeo único)"
+    llm_description: "Identifier for the video track"
+    form: llm
+    default: "None"
+
+  - name: relative_index
+    type: string
+    required: false
+    label:
+      en_US: Relative Index
+      zh_Hans: 轨道渲染顺序索引
+      pt_BR: Índice Relativo
+    human_description:
+      en_US: "Rendering order index for the track"
+      zh_Hans: "轨道的渲染顺序索引"
+      pt_BR: "Índice de ordem de renderização da faixa"
+    llm_description: "Order in which tracks are rendered"
+    form: llm
+    default: "None"
+
+  - name: duration
+    type: string
+    required: false
+    label:
+      en_US: Duration
+      zh_Hans: 视频时长
+      pt_BR: Duração
+    human_description:
+      en_US: "Duration of the video (seconds). Skip detection if provided."
+      zh_Hans: "视频时长（秒）。若提供则跳过自动检测"
+      pt_BR: "Duração do vídeo (segundos). Pule a detecção se fornecida."
+    llm_description: "Override for the video duration"
+    form: llm
+    default: "None"
+
+  - name: transition
+    type: string
+    required: false
+    label:
+      en_US: Transition Type
+      zh_Hans: 转场类型
+      pt_BR: Tipo de Transição
+    human_description:
+      en_US: "Type of transition effect"
+      zh_Hans: "转场效果类型"
+      pt_BR: "Tipo de efeito de transição"
+    llm_description: "Effect for transitioning between clips"
+    form: llm
+    default: "None"
+
+  - name: transition_duration
+    type: string
+    required: false
+    label:
+      en_US: Transition Duration
+      zh_Hans: 转场持续时间
+      pt_BR: Duração da Transição
+    human_description:
+      en_US: "Duration of the transition effect (seconds)"
+      zh_Hans: "转场效果持续时间（秒）"
+      pt_BR: "Duração do efeito de transição (segundos)"
+    llm_description: "Length of the transition effect"
+    form: llm
+    default: "None"
+
+  - name: mask_type
+    type: select
+    required: false
+    label:
+      en_US: Mask Type
+      zh_Hans: 蒙版类型
+      pt_BR: Tipo de Máscara
+    human_description:
+      en_US: "Type of mask to apply"
+      zh_Hans: "应用的蒙版类型"
+      pt_BR: "Tipo de máscara a aplicar"
+    llm_description: "Shape of the masking region"
+    form: form
+    options:
+      - name: mask_type_1
+        label:
+          zh_Hans: 线性
+          en_US: line
+        description: 线性掩码
+        value: "线性"
+      - name: mask_type_2
+        label:
+          zh_Hans: 镜面
+          en_US: mirror
+        description: 镜面掩码
+        value: "镜面"
+      - name: mask_type_3
+        label:
+          zh_Hans: 圆形
+          en_US: circle
+        description: 圆形掩码
+        value: "圆形"
+      - name: mask_type_4
+        label:
+          zh_Hans: 矩形
+          en_US: rectangle
+        description: 矩形掩码
+        value: "矩形"
+      - name: mask_type_5
+        label:
+          zh_Hans: 爱心
+          en_US: geometric_shape
+        description: 爱心掩码
+        value: "爱心"
+      - name: mask_type_6
+        label:
+          zh_Hans: 星形
+          en_US: geometric_shape
+        description: 星形掩码
+        value: "星形"
+
+  - name: mask_center_x
+    type: string
+    required: false
+    label:
+      en_US: Mask Center X
+      zh_Hans: 蒙版中心X坐标
+      pt_BR: Centro X da Máscara
+    human_description:
+      en_US: "Horizontal center position of the mask (0-1)"
+      zh_Hans: "蒙版的水平中心位置（0-1）"
+      pt_BR: "Posição central horizontal da máscara (0-1)"
+    llm_description: "Normalized X coordinate for mask center"
+    form: llm
+    default: "None"
+
+  - name: mask_center_y
+    type: string
+    required: false
+    label:
+      en_US: Mask Center Y
+      zh_Hans: 蒙版中心Y坐标
+      pt_BR: Centro Y da Máscara
+    human_description:
+      en_US: "Vertical center position of the mask (0-1)"
+      zh_Hans: "蒙版的垂直中心位置（0-1）"
+      pt_BR: "Posição central vertical da máscara (0-1)"
+    llm_description: "Normalized Y coordinate for mask center"
+    form: llm
+    default: "None"
+
+  - name: mask_size
+    type: string
+    required: false
+    label:
+      en_US: Mask Size
+      zh_Hans: 蒙版大小
+      pt_BR: Tamanho da Máscara
+    human_description:
+      en_US: "Size of the mask (0-1)"
+      zh_Hans: "蒙版大小（0-1）"
+      pt_BR: "Tamanho da máscara (0-1)"
+    llm_description: "Scaling factor for the mask"
+    form: llm
+    default: "None"
+
+  - name: mask_rotation
+    type: string
+    required: false
+    label:
+      en_US: Mask Rotation
+      zh_Hans: 蒙版旋转角度
+      pt_BR: Rotação da Máscara
+    human_description:
+      en_US: "Rotation angle of the mask (degrees)"
+      zh_Hans: "蒙版的旋转角度（度）"
+      pt_BR: "Ângulo de rotação da máscara (graus)"
+    llm_description: "Rotation applied to the mask"
+    form: llm
+    default: "None"
+
+  - name: mask_feather
+    type: string
+    required: false
+    label:
+      en_US: Mask Feather
+      zh_Hans: 蒙版羽化程度
+      pt_BR: Suavização da Máscara
+    human_description:
+      en_US: "Feathering level of the mask edges (0-1)"
+      zh_Hans: "蒙版边缘的羽化程度（0-1）"
+      pt_BR: "Nível de suavização das bordas da máscara (0-1)"
+    llm_description: "Softness of the mask edges"
+    form: llm
+    default: "None"
+
+  - name: mask_invert
+    type: select
+    required: false
+    label:
+      en_US: Invert Mask
+      zh_Hans: 反转蒙版
+      pt_BR: Inverter Máscara
+    human_description:
+      en_US: "Whether to invert the mask"
+      zh_Hans: "是否反转蒙版"
+      pt_BR: "Se a máscara deve ser invertida"
+    llm_description: "Toggle to invert the mask effect"
+    form: form
+    options:
+      - name: mask_invert_1
+        label:
+          zh_Hans: 反转遮罩-是
+          en_US: mask_invert-true
+        description: 开启反光遮罩
+        value: 'True'
+      - name: mask_invert_2
+        label:
+          zh_Hans: 反转遮罩-否
+          en_US: mask_invert-false
+        description: 关闭反光遮罩
+        value: 'False'
+
+  - name: mask_rect_width
+    type: string
+    required: false
+    label:
+      en_US: Rectangle Width
+      zh_Hans: 矩形蒙版宽度
+      pt_BR: Largura do Retângulo
+    human_description:
+      en_US: "Width of the rectangular mask (proportion of material width)"
+      zh_Hans: "矩形蒙版的宽度（素材宽度的比例）"
+      pt_BR: "Largura da máscara retangular (proporção da largura do material)"
+    llm_description: "Width for rectangular masks"
+    form: llm
+    default: "None"
+
+  - name: mask_round_corner
+    type: string
+    required: false
+    label:
+      en_US: Rounded Corner
+      zh_Hans: 矩形蒙版圆角
+      pt_BR: Cantos Arredondados
+    human_description:
+      en_US: "Rounding radius for rectangular masks (0-100)"
+      zh_Hans: "矩形蒙版的圆角参数（0-100）"
+      pt_BR: "Raio de arredondamento dos cantos da máscara retangular (0-100)"
+    llm_description: "Rounding radius for rectangular masks"
+    form: llm
+    default: "None"
+
+  - name: volume
+    type: string
+    required: false
+    label:
+      en_US: Volume Level
+      zh_Hans: 音量级别
+      pt_BR: Nível de Volume
+    human_description:
+      en_US: "Volume level (0.0 is mute, 1.0 is original volume)"
+      zh_Hans: "音量级别（0.0为静音，1.0为原始音量）"
+      pt_BR: "Nível de volume (0.0 é mudo, 1.0 é o volume original)"
+    llm_description: "Audio volume adjustment"
+    form: llm
+    default: "None"
+extra:
+  python:
+    source: tools/capcut_add_video.py

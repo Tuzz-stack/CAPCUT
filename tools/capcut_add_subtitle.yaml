@@ -1,0 +1,494 @@
+identity:
+  name: "capcut_add_subtitle"
+  author: "zxf"
+  label:
+    en_US: "capcut_add_subtitle"
+    zh_Hans: "capcut_add_subtitle"
+    pt_BR: "capcut_add_subtitle"
+description:
+  human:
+    en_US: "capcut_add_subtitle"
+    zh_Hans: "capcut_add_subtitle"
+    pt_BR: "capcut_add_subtitle"
+  llm: "capcut_add_subtitle"
+parameters:
+  - name: srt_path
+    type: string
+    required: true
+    default: "None"
+    label:
+      en_US: Subtitle Path/URL/Content
+      zh_Hans: 字幕文件路径/URL/内容
+      pt_BR: Caminho/URL/Conteúdo do Legenda
+    human_description:
+      en_US: "Subtitle file path, URL, or SRT text content"
+      zh_Hans: "字幕文件路径、URL或SRT文本内容"
+      pt_BR: "Caminho do arquivo de legenda, URL ou conteúdo de texto SRT"
+    llm_description: "Subtitle source, can be file path, URL or direct SRT content"
+    form: llm
+  - name: draft_id
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Draft ID
+      zh_Hans: 草稿ID
+      pt_BR: ID do Rascunho
+    human_description:
+      en_US: "Draft ID"
+      zh_Hans: "草稿ID"
+      pt_BR: "ID do rascunho"
+    llm_description: "Identifier for the draft"
+    form: llm
+  - name: track_name
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Track Name
+      zh_Hans: 轨道名称
+      pt_BR: Nome da Faixa
+    human_description:
+      en_US: "Track name for the subtitles"
+      zh_Hans: "字幕轨道的名称"
+      pt_BR: "Nome da faixa para as legendas"
+    llm_description: "Name of the subtitle track"
+    form: llm
+  - name: time_offset
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Time Offset
+      zh_Hans: 时间偏移
+      pt_BR: Deslocamento de Tempo
+    human_description:
+      en_US: "Time offset for subtitles"
+      zh_Hans: "字幕时间偏移"
+      pt_BR: "Deslocamento de tempo para legendas"
+    llm_description: "Time shift applied to subtitles"
+    form: llm
+  - name: font
+    type: select
+    required: true
+    label:
+      en_US: Font
+      zh_Hans: 字体
+      pt_BR: Fonte
+    human_description:
+      en_US: "Font name"
+      zh_Hans: "字体名称"
+      pt_BR: "Nome da fonte"
+    llm_description: "Text font"
+    form: form
+    options:
+      - name: font1
+        label:
+          zh_Hans: 思源中宋
+          en_US: Source Han Sans Normal
+        description: 思源中宋字体
+        value: '思源中宋'
+      - name: font2
+        label:
+          zh_Hans: 思源粗宋
+          en_US: Source Han Sans Bold
+        description: 思源粗宋字体
+        value: '思源粗宋'
+  - name: font_size
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Font Size
+      zh_Hans: 字体大小
+      pt_BR: Tamanho da Fonte
+    human_description:
+      en_US: "Font size"
+      zh_Hans: "字体大小"
+      pt_BR: "Tamanho da fonte"
+    llm_description: "Size of the text font"
+    form: llm
+  - name: bold
+    type: select
+    required: true
+    default: "false"
+    label:
+      en_US: Bold
+      zh_Hans: 加粗
+      pt_BR: Negrito
+    human_description:
+      en_US: "Bold text"
+      zh_Hans: "粗体文本"
+      pt_BR: "Texto em negrito"
+    llm_description: "Enable bold text"
+    form: form
+    options:
+      - name: Bold_true
+        label:
+          zh_Hans: 开启字体加粗
+          en_US: Bold
+        description: 开启字体加粗
+        value: 'true'
+      - name: Bold_false
+        label:
+          zh_Hans: 关闭字体加粗
+          en_US: unBold
+        description: 关闭字体加粗
+        value: 'false'
+  - name: italic
+    type: select
+    required: true
+    default: "false"
+    label:
+      en_US: Italic
+      zh_Hans: 斜体
+      pt_BR: Itálico
+    human_description:
+      en_US: "Italic text"
+      zh_Hans: "斜体文本"
+      pt_BR: "Texto em itálico"
+    llm_description: "Enable italic text"
+    form: form
+    options:
+      - name: italic_true
+        label:
+          zh_Hans: 开启斜体
+          en_US: italic
+        description: 开启斜体
+        value: 'true'
+      - name: italic_false
+        label:
+          zh_Hans: 关闭斜体
+          en_US: unitalic
+        description: 关闭斜体
+        value: 'false'
+  - name: underline
+    type: select
+    required: true
+    default: "false"
+    label:
+      en_US: Underline
+      zh_Hans: 下划线
+      pt_BR: Sublinhado
+    human_description:
+      en_US: "Underlined text"
+      zh_Hans: "带下划线文本"
+      pt_BR: "Texto sublinhado"
+    llm_description: "Enable underlined text"
+    form: form
+    options:
+      - name: Underline_true
+        label:
+          zh_Hans: 开启下划线
+          en_US: underline
+        description: 开启下划线
+        value: 'true'
+      - name: Underline_false
+        label:
+          zh_Hans: 关闭下划线
+          en_US: ununderline
+        description: 关闭下划线
+        value: 'false'
+  - name: font_color
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Font Color
+      zh_Hans: 字体颜色
+      pt_BR: Cor da Fonte
+    human_description:
+      en_US: "Font color in hex format"
+      zh_Hans: "十六进制格式的字体颜色"
+      pt_BR: "Cor da fonte no formato hexadecimal"
+    llm_description: "Text color"
+    form: llm
+  - name: border_alpha
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Border Alpha
+      zh_Hans: 边框透明度
+      pt_BR: Transparência da Borda
+    human_description:
+      en_US: "Border transparency"
+      zh_Hans: "边框透明度"
+      pt_BR: "Transparência da borda"
+    llm_description: "Opacity of the text border"
+    form: llm
+  - name: border_color
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Border Color
+      zh_Hans: 边框颜色
+      pt_BR: Cor da Borda
+    human_description:
+      en_US: "Border color in hex format"
+      zh_Hans: "十六进制格式的边框颜色"
+      pt_BR: "Cor da borda no formato hexadecimal"
+    llm_description: "Color of the text border"
+    form: llm
+  - name: border_width
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Border Width
+      zh_Hans: 边框宽度
+      pt_BR: Largura da Borda
+    human_description:
+      en_US: "Border width"
+      zh_Hans: "边框宽度"
+      pt_BR: "Largura da borda"
+    llm_description: "Width of the text border"
+    form: llm
+  - name: background_color
+    type: select
+    required: true
+    label:
+      en_US: Background Color
+      zh_Hans: 背景颜色
+      pt_BR: Cor de Fundo
+    human_description:
+      en_US: "Background color in hex format"
+      zh_Hans: "十六进制格式的背景颜色"
+      pt_BR: "Cor de fundo no formato hexadecimal"
+    llm_description: "Background color behind text"
+    form: form
+    options:
+      - name: font_color_1
+        label:
+          zh_Hans: 红色
+          en_US: red
+        description: 红色字体
+        value: '#FF0000'
+      - name: font_color_2
+        label:
+          zh_Hans: 绿色
+          en_US: green
+        description: 绿色字体
+        value: '#00FF00'
+      - name: font_color_3
+        label:
+          zh_Hans: 蓝色
+          en_US: blue
+        description: 蓝色字体
+        value: '#0000FF'
+  - name: background_style
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Background Style
+      zh_Hans: 背景样式
+      pt_BR: Estilo de Fundo
+    human_description:
+      en_US: "Background style"
+      zh_Hans: "背景样式"
+      pt_BR: "Estilo de fundo"
+    llm_description: "Style of the text background"
+    form: llm
+  - name: background_alpha
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Background Alpha
+      zh_Hans: 背景透明度
+      pt_BR: Transparência do Fundo
+    human_description:
+      en_US: "Background transparency"
+      zh_Hans: "背景透明度"
+      pt_BR: "Transparência do fundo"
+    llm_description: "Opacity of the text background"
+    form: llm
+  - name: bubble_effect_id
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Bubble Effect ID
+      zh_Hans: 气泡效果ID
+      pt_BR: ID do Efeito de Bolha
+    human_description:
+      en_US: "Bubble effect ID"
+      zh_Hans: "气泡效果ID"
+      pt_BR: "ID do efeito de bolha"
+    llm_description: "ID of the bubble effect"
+    form: llm
+  - name: bubble_resource_id
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Bubble Resource ID
+      zh_Hans: 气泡资源ID
+      pt_BR: ID do Recurso de Bolha
+    human_description:
+      en_US: "Bubble resource ID"
+      zh_Hans: "气泡资源ID"
+      pt_BR: "ID do recurso de bolha"
+    llm_description: "ID of the bubble resource"
+    form: llm
+  - name: effect_effect_id
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Effect ID
+      zh_Hans: 效果ID
+      pt_BR: ID do Efeito
+    human_description:
+      en_US: "Text effect ID"
+      zh_Hans: "文本效果ID"
+      pt_BR: "ID do efeito de texto"
+    llm_description: "ID of the text effect"
+    form: llm
+  - name: transform_x
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Transform X
+      zh_Hans: X轴变换
+      pt_BR: Transformação X
+    human_description:
+      en_US: "Horizontal transformation"
+      zh_Hans: "水平变换"
+      pt_BR: "Transformação horizontal"
+    llm_description: "Horizontal position adjustment"
+    form: llm
+  - name: transform_y
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Transform Y
+      zh_Hans: Y轴变换
+      pt_BR: Transformação Y
+    human_description:
+      en_US: "Vertical transformation"
+      zh_Hans: "垂直变换"
+      pt_BR: "Transformação vertical"
+    llm_description: "Vertical position adjustment"
+    form: llm
+  - name: scale_x
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Scale X
+      zh_Hans: X轴缩放
+      pt_BR: Escala X
+    human_description:
+      en_US: "Horizontal scaling"
+      zh_Hans: "水平缩放"
+      pt_BR: "Escala horizontal"
+    llm_description: "Horizontal text scaling"
+    form: llm
+  - name: scale_y
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Scale Y
+      zh_Hans: Y轴缩放
+      pt_BR: Escala Y
+    human_description:
+      en_US: "Vertical scaling"
+      zh_Hans: "垂直缩放"
+      pt_BR: "Escala vertical"
+    llm_description: "Vertical text scaling"
+    form: llm
+  - name: rotation
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Rotation
+      zh_Hans: 旋转
+      pt_BR: Rotação
+    human_description:
+      en_US: "Text rotation"
+      zh_Hans: "文本旋转"
+      pt_BR: "Rotação do texto"
+    llm_description: "Rotation angle of the text"
+    form: llm
+  - name: style_reference
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Style Reference
+      zh_Hans: 样式参考
+      pt_BR: Referência de Estilo
+    human_description:
+      en_US: "Style reference"
+      zh_Hans: "样式参考"
+      pt_BR: "Referência de estilo"
+    llm_description: "Reference to a predefined style"
+    form: llm
+  - name: vertical
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Vertical
+      zh_Hans: 垂直显示
+      pt_BR: Vertical
+    human_description:
+      en_US: "Vertical text display"
+      zh_Hans: "垂直文本显示"
+      pt_BR: "Exibição vertical de texto"
+    llm_description: "Whether to display text vertically"
+    form: llm
+  - name: alpha
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Alpha
+      zh_Hans: 透明度
+      pt_BR: Transparência
+    human_description:
+      en_US: "Text transparency"
+      zh_Hans: "文本透明度"
+      pt_BR: "Transparência do texto"
+    llm_description: "Opacity of the text"
+    form: llm
+  - name: width
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Width
+      zh_Hans: 宽度
+      pt_BR: Largura
+    human_description:
+      en_US: "Width"
+      zh_Hans: "宽度"
+      pt_BR: "Largura"
+    llm_description: "Width parameter"
+    form: llm
+  - name: height
+    type: string
+    required: false
+    default: "None"
+    label:
+      en_US: Height
+      zh_Hans: 高度
+      pt_BR: Altura
+    human_description:
+      en_US: "Height"
+      zh_Hans: "高度"
+      pt_BR: "Altura"
+    llm_description: "Height parameter"
+    form: llm
+
+
+extra:
+  python:
+    source: tools/capcut_add_subtitle.py

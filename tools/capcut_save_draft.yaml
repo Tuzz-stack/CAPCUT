@@ -1,0 +1,46 @@
+identity:
+  name: "capcut_save_draft"
+  author: "zxf"
+  label:
+    en_US: "capcut_save_draft"
+    zh_Hans: "capcut_save_draft"
+    pt_BR: "capcut_save_draft"
+description:
+  human:
+    en_US: "capcut_save_draft"
+    zh_Hans: "capcut_save_draft"
+    pt_BR: "capcut_save_draft"
+  llm: "capcut_save_draft"
+parameters:
+  - name: draft_id
+    type: string
+    required: true
+    default: "123456"
+    label:
+      en_US: draft_id
+      zh_Hans: 草稿的id，不填写会系统生成
+      pt_BR: draft_id
+    human_description:
+      en_US: "draft_id"
+      zh_Hans: "草稿的id，不填写会系统生成"
+      pt_BR: "draft_id"
+    llm_description: "draft_id"
+    form: llm
+  - name: draft_folder
+    type: string
+    required: false
+    default: "your capcut draft folder"
+    label:
+      en_US: draft_folder
+      zh_Hans: 草稿文件夹路径
+      pt_BR: draft_folder
+    human_description:
+      en_US: "Draft folder path"
+      zh_Hans: "草稿文件夹路径"
+      pt_BR: "Caminho da pasta de rascunho"
+    llm_description: "Draft folder path"
+    form: llm
+
+extra:
+  python:
+    source: tools/capcut_save_draft.py
