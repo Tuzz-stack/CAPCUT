@@ -1,0 +1,11 @@
+kortix_version: 2
+default_agent: reference
+project:
+  name: CAPCUT reference
+  description: Isolated test branch for local Kortix reference verification.
+opencode:
+  config_dir: harnesses/opencode
+agents:
+  reference:
+    file: agents/reference.md
+    workspace: { project_repository: true }
