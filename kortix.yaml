@@ -9,3 +9,13 @@ agents:
   reference:
     file: agents/reference.md
     workspace: { project_repository: true }
+
+sandbox:
+  default: reference-https-20261023
+  templates:
+    - slug: reference-https-20261023
+      name: Fixed e56 HTTPS reference
+      dockerfile: .kortix/reference-https.Dockerfile
+      cpu: 2
+      memory: 4
+      disk: 20
