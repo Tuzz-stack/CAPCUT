@@ -1,0 +1,37 @@
+name: Native OpenCode stall diagnostic
+on:
+  push:
+    branches: [codex/opencode-native-x64-diagnostic-20261025]
+    paths:
+      - diagnostics/opencode-stall/**
+      - .github/workflows/opencode-native-diagnostic.yml
+permissions:
+  contents: read
+concurrency:
+  group: opencode-native-diagnostic
+  cancel-in-progress: false
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout: diagnostics/opencode-stall
+      - name: Verify native host and fetch pinned public dependencies
+        run: |
+          test "$(uname -m)" = x86_64
+          python3 diagnostics/opencode-stall/prepare.py
+          docker pull --platform linux/amd64 kortix/kortix-api@sha256:d5da5aa2b4814770629725a46abd237ae0e40479c6ae161a50443fc901b27953
+          docker pull --platform linux/amd64 python@sha256:b921fe7e7522f828d45197a47656ec465a9b15689b27fa8e1fba2864fca5b967
+      - name: Run unchanged engine on a native x64 Linux kernel
+        run: python3 diagnostics/opencode-stall/matrix.py --host-kind native-x64 --repeats 3 --output "$RUNNER_TEMP/native-stall-evidence"
+      - name: Preserve diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: native-opencode-stall-evidence
+          path: ${{ runner.temp }}/native-stall-evidence/evidence
+          retention-days: 1
+          if-no-files-found: warn
