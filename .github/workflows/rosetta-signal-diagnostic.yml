@@ -1,0 +1,44 @@
+name: Native signal and fork reduction
+on:
+  push:
+    branches: [codex/opencode-native-x64-diagnostic-20261025]
+    paths:
+      - diagnostics/rosetta-signal-repro/**
+      - .github/workflows/rosetta-signal-diagnostic.yml
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout: diagnostics/rosetta-signal-repro
+      - name: Build and run the synthetic reduction on native x64
+        run: |
+          test "$(uname -m)" = x86_64
+          mkdir evidence
+          uname -a > evidence/host.txt
+          cc --version > evidence/compiler.txt
+          cc -Wall -Wextra -Werror -O0 -g -pthread diagnostics/rosetta-signal-repro/repro.c -o evidence/repro
+          sha256sum evidence/repro > evidence/binary.sha256
+          cp diagnostics/rosetta-signal-repro/repro.c evidence/
+          python3 - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          rows=[]
+          for mode in ['plain','gc-wait','gc-wait-allow-trap']:
+              p=subprocess.run(['timeout','--kill-after=1s','5s','./evidence/repro',mode],capture_output=True,text=True,timeout=8)
+              rows.append({'mode':mode,'returncode':p.returncode,'stdout':p.stdout,'stderr':p.stderr})
+          Path('evidence/results.json').write_text(json.dumps(rows,indent=2))
+          print(json.dumps(rows,indent=2))
+          assert all(x['returncode']==0 and 'PASS' in x['stdout'] for x in rows)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-signal-fork-evidence
+          path: evidence
+          retention-days: 1
