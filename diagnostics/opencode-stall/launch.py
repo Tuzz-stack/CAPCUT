@@ -49,9 +49,19 @@ def main():
     (out/'engine-state/config/opencode/opencode.json').write_text(json.dumps(cfg))
     (out/'engine-state/models-empty.json').write_text('{}')
     (out/'engine-state/gitconfig').write_text('[safe]\n\tdirectory = /workspace\n')
+    # The pinned engine runs as UID/GID 1000. Linux CI's host UID can differ;
+    # prepare only these disposable synthetic mounts, without changing engine identity.
+    out.chmod(0o755)
+    ownership = docker('run','--rm','--pull=never','--network','none','--user','0:0',
+        '--mount',f'type=bind,src={out},dst=/out','--entrypoint','python3',driver_image,'-c',
+        'from pathlib import Path; import os,json; '
+        'roots=[Path("/out/workspace"),Path("/out/engine-state")]; '
+        '[(os.chown(p,1000,1000)) for root in roots for p in [root,*root.rglob("*")]]; '
+        'print(json.dumps({str(p):{"uid":p.stat().st_uid,"gid":p.stat().st_gid,"mode":oct(p.stat().st_mode & 0o777)} for p in roots}))')
     receipt={'host_kind':args.host_kind,'host_system':platform.system(),'host_machine':platform.machine(),'host_platform':platform.platform(),'docker_arch':docker('info','--format','{{.Architecture}}'),'driver_image':driver_image,'config_sha256':hashlib.sha256((out/'engine-state/config/opencode/opencode.json').read_bytes()).hexdigest(),'initial_git_oid':subprocess.check_output(['git','rev-parse','HEAD'],cwd=workspace,text=True).strip(),'source_hashes':sources,'run_id':run,'catalog':args.catalog,'warm':args.warm,'pace':args.pace,'runtime':args.runtime,'rounds':args.rounds,'scenario':args.scenario,'vcs':args.vcs,'model_count':len(cfg['provider']['repro']['models']),'arch':args.arch,'snapshot':args.snapshot,'engine_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'image':image,'network':'none; loopback shared with a native Python observer on each host','resources':{'target_cpus':2,'target_memory':'2g','driver_cpus':1,'driver_memory':'512m'}}
     assert receipt['engine_sha256']=='de0724a36eaf3166e7f1ff38d0f4478b95ccc47725e9597b3fe66d3d3e18baa2'
     if args.host_kind=='native-x64':assert receipt['docker_arch'] in ['x86_64','amd64']
+    receipt['mount_ownership']=json.loads(ownership)
     ids={}
     try:
         ids['driver']=docker('run','-d','--pull=never','--name','hh-stall-driver-'+run,'--cap-add','SYS_PTRACE','--init','--network','none','--cpus','1','--memory','512m','--pids-limit','128','--mount',f'type=bind,src={out},dst=/out','--entrypoint','python3',driver_image,'/out/driver.py')
