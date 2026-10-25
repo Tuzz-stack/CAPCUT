@@ -36,6 +36,24 @@ jobs:
           print(json.dumps(rows,indent=2))
           assert all(x['returncode']==0 and 'PASS' in x['stdout'] for x in rows)
           PY
+      - name: Repeat inside the exact diagnostic image
+        run: |
+          docker pull --platform linux/amd64 kortix/kortix-api@sha256:d5da5aa2b4814770629725a46abd237ae0e40479c6ae161a50443fc901b27953
+          python3 - <<'PY'
+          import hashlib, json, subprocess
+          from pathlib import Path
+          root=Path('evidence').resolve()
+          image='kortix/kortix-api@sha256:d5da5aa2b4814770629725a46abd237ae0e40479c6ae161a50443fc901b27953'
+          rows=[]
+          for repeat in range(3):
+              for mode in ['plain','gc-wait','gc-wait-allow-trap']:
+                  p=subprocess.run(['docker','run','--rm','--platform','linux/amd64','--network','none','--cpus','1','--memory','128m','--no-healthcheck','-v',f'{root}:/probe:ro','--entrypoint','/usr/bin/timeout',image,'--kill-after=1s','8s','/probe/repro',mode],capture_output=True,text=True,timeout=15)
+                  rows.append({'repeat':repeat,'mode':mode,'returncode':p.returncode,'stdout':p.stdout,'stderr':p.stderr})
+          result={'binary_sha256':hashlib.sha256((root/'repro').read_bytes()).hexdigest(),'image':image,'rows':rows}
+          (root/'native-container-results.json').write_text(json.dumps(result,indent=2))
+          print(json.dumps(result,indent=2))
+          assert all(x['returncode']==0 and 'PASS' in x['stdout'] for x in rows)
+          PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
